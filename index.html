@@ -118,7 +118,7 @@ body.with-sidebar{padding-left:190px}
 <header class="hero">
 <p class="ep-title">失控游戏 · EP01</p>
 <h1>星 星 岛 内 测</h1>
-<p class="subtitle">旧商场外景 · 场景锚点图集 · 十景 · <a href="幽冥小火车/" style="color:rgba(200,170,140,.5);text-decoration:none">→ 幽冥小火车内景</a></p>
+<p class="subtitle">旧商场外景 + 幽冥小火车 · 场景锚点图集 · 二十景</p>
 </header>
 
 <div class="bible-core">
@@ -168,12 +168,24 @@ body.with-sidebar{padding-left:190px}
 <h3>关键词</h3>
 <blockquote>旧商场 / 儿童乐园 / 衰败 / 边缘地带 / 工地 / 烂尾楼 / 空旷 / 潮湿 / 2000年前后</blockquote>
 
+<h3>S1 幽冥小火车 · 空间硬事实</h3>
+<ul>
+<li>小火车固定在左侧前景：暗砖红车壳+土黄裙板+泛黄圆脸+凹陷圆眼孔</li>
+<li>圆形黑洞假山隧道居中，粗糙灰黑玻璃钢包裹</li>
+<li>右侧：红锈旧铁栏杆折返通道+发黄白瓷砖立柱+黑色塑料帘</li>
+<li>洞口上方绿色安全出口灯；右中景小红指示灯</li>
+<li>地面：深灰湿冷水磨石/粗骨料，窄轨轨枕清晰</li>
+<li>最右墙：原创褪色卡通贴纸，脸部均为黑色圆洞</li>
+</ul>
+
 <h3>绝对禁忌</h3>
 <ul>
 <li>❌ 现代玻璃幕墙写字楼风格</li>
 <li>❌ 活跃商业氛围（灯光/人群/新车）</li>
 <li>❌ 晴天强光/蓝天白云</li>
-<li>❌ 过于整洁或过于废墟化（非末日废墟，是衰败中的建筑）</li>
+<li>❌ 欧美鬼屋、哥特城堡、赛博朋克、蓝紫霓虹</li>
+<li>❌ 怪兽尖牙利爪、血腥、黏液、真实尸体</li>
+<li>❌ 现成动漫IP、清晰文字、品牌Logo</li>
 </ul>
 
 </div>
@@ -190,7 +202,7 @@ body.with-sidebar{padding-left:190px}
 <div class="lb-info" id="lbInfo"></div>
 <span class="lb-nav lb-next" id="lbNext">&#8250;</span>
 </div>
-<div class="footer">失 控 游 戏 · 星星岛内测 · 十景</div>
+<div class="footer">失 控 游 戏 · 星星岛内测 · 二十景</div>
 
 <script>
 // ── Password Gate ──
@@ -205,8 +217,7 @@ if(hex===PW_HASH){sessionStorage.setItem("huzu_auth","1");document.getElementByI
 else{err.textContent="密码错误"}}
 function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整场景设定"}else{d.classList.add("active");b.innerHTML="▾ 收起场景设定";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
 
-const scenes=[
-// ── EP01_SC01 旧商场外景 ──
+const scenes=[// ── EP01_SC01 旧商场外景 ──
 {file:"A01_外景主母版.png",name:"A01 · 外景主母版",script:"「星星岛儿童乐园，1999年开的，2008年关闭。」——正面全景，千禧年风格褪色招牌，烂尾楼骨架环绕",section:"🏚️ 旧商场外景",anchor:"A01"},
 {file:"A02_入口方向锚点.png",name:"A02 · 入口方向锚点",script:"「邹青倒吊着看倒吊的世界——侧门、旧商场、千禧年风格的褪色招牌。」——从停车区望主入口",section:"🏚️ 旧商场外景",anchor:"A02"},
 {file:"A05_高位空间关系.png",name:"A05 · 高位空间关系",script:"俯瞰全景：商场坐落在空旷广场中央，被多车道空路和烂尾楼混凝土骨架包围，远处灰雾笼罩城市天际线",section:"🏚️ 旧商场外景",anchor:"A05"},
@@ -219,6 +230,19 @@ const scenes=[
 
 // ── 锚点合集 ──
 {file:"Anchor_Bible_A01-A09.png",name:"EP01_SC01 Anchor Bible",script:"场景锚点合集 A01–A09：主母版、入口方向、侧面体块、后勤后方、高位关系、入口细节、材质参考、状态氛围、人物体度",section:"📐 锚点合集",anchor:"bible",wide:true}
+,
+
+{file:"幽冥小火车/月台全景_空间母版.png",name:"S1-01 · 空间母版",script:"低机位正视月台：暗砖红小火车在左，圆形假山黑洞居中，绿安全出口灯悬于洞口上方。右侧锈栏杆+白瓷砖+黑色塑料帘，地面湿冷反光",section:"🏚️ 空间建立",anchor:""},
+{file:"幽冥小火车/月台全景_空间母版.png",name:"S1-01b · 月台全貌",script:"地府游乐项目全景：牛头马面持叉守洞，锡纸假桥栏杆缀彩花。洞口上方卡通拍照板+红LED屏，车厢一角入画",section:"🏚️ 空间建立",anchor:""},
+{file:"幽冥小火车/系统启动_球童底座.png",name:"S1-09 · 系统启动",script:"球童底座彩灯亮起，弹簧缓缓拉直。倒地的DV、卷边抠脸贴纸。远处黑帘后牛头马面隐现——设施被低技术系统接管的第一秒",section:"⚡ 异常触发",anchor:""},
+{file:"幽冥小火车/麻花_被困车厢.png",name:"S1-02 · 麻花被困",script:"麻花坐在过于窄小的红黄儿童座舱里，安全压杆反锁腰间。她回头望向黑暗假山洞口，DV正要坠地——恐惧来自设施按错误规则困住人",section:"👧 剧情状态",anchor:""},
+{file:"幽冥小火车/球童_伸手逼近.png",name:"S1-03 · 球童逼近",script:"极低DV仰角：蓝白泥污运动鞋在前，玻璃钢玩偶手从车厢边缘缓慢伸来。背景是失焦的塑料帘、绿安全出口灯和铁轨",section:"👧 剧情状态",anchor:""},
+{file:"幽冥小火车/开裂足球_轨道特写.png",name:"S1-05 · 开裂足球",script:"旧足球停在窄轨正中，深裂口撕开吸光空腔——缝线松脱、无血肉无眼球。铁轨旁暗红玩具灯照到湿冷水磨石和蓝白运动鞋模糊轮廓",section:"🎈 关键道具",anchor:""},
+{file:"幽冥小火车/开裂足球_红光轨道.png",name:"S1-05b · 足球红光",script:"另一角度：足球停在轨道中央，右侧墙红灯投下血红色反光。远处绿出口灯微亮，上方隐约可见条纹运动鞋和旧袜子",section:"🎈 关键道具",anchor:""},
+{file:"幽冥小火车/假墙夹层_抠脸模特.png",name:"S1-06 · 假墙夹层",script:"检修夹层内堆满淘汰塑料模特和半身人体模型。每个脸部覆盖褪色卡通贴纸，贴纸中央抠成整齐圆形空洞——刚刚同步转过来的塑料人头",section:"🕳️ 异常空间",anchor:""},
+{file:"幽冥小火车/地府布景_牛头马面.png",name:"S1-07 · 地府布景",script:"儿童乐园尺度的掉漆牛头马面玻璃钢塑像。原本的地府名称被褪色欢迎牌粗暴覆盖。锡纸桥栏、塑料花——廉价又不对劲",section:"🕳️ 异常空间",anchor:""},
+{file:"幽冥小火车/机关陈设_阎王桌弹珠机.png",name:"S1-08 · 机关陈设",script:"掉漆阎王桌右下藏可弹机关。发雾弹珠机屏幕只留故障光块。荧光牙齿塑料骷髅旁散落褪色游戏币——九十年代末无人维护的鬼屋角落",section:"🎈 关键道具",anchor:""}
+
 ];
 
 const root=document.getElementById("content-root");
