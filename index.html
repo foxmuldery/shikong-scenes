@@ -21,6 +21,10 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 .bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
 .bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-bottom:8px}
 .bible-toggle:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-copy{display:none;font-size:13px;letter-spacing:.08em;color:rgba(180,150,100,.5);cursor:pointer;padding:6px 18px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-left:10px;vertical-align:middle}
+.bible-copy.show{display:inline-block}
+.bible-copy:hover{color:rgba(220,190,130,.85);border-color:rgba(180,150,100,.5);background:rgba(180,150,100,.08)}
+.bible-copy.copied{color:#6ec9a8;border-color:rgba(110,201,168,.4);background:rgba(110,201,168,.08)}
 
 .bible-detail{display:none;max-width:1100px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .bible-detail.active{display:block}
@@ -127,7 +131,7 @@ body.with-sidebar{padding-left:190px}
 <span class="bible-tone">衰败</span><span class="bible-tone">潮湿</span><span class="bible-tone">烂尾楼</span><span class="bible-tone">千禧年</span>
 </div>
 <button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整场景设定</button>
-<button class="bible-toggle" style="margin-left:8px" onclick="copyBible()">📋 一键复制</button>
+<button class="bible-copy" id="bibleCopy" onclick="copyBible()" title="复制圣经全文">📋 一键复制</button>
 <div class="bible-detail" id="bibleDetail">
 
 <h3>场景设定</h3>
@@ -216,8 +220,8 @@ const hash=await crypto.subtle.digest("SHA-256",buf);
 const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("");
 if(hex===PW_HASH){sessionStorage.setItem("huzu_auth","1");document.getElementById("pwGate").classList.add("hidden")}
 else{err.textContent="密码错误"}}
-function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整场景设定"}else{d.classList.add("active");b.innerHTML="▾ 收起场景设定";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
-async function copyBible(){var t=document.getElementById("bibleDetail").innerText;try{await navigator.clipboard.writeText(t);var b=event.target,c=b.textContent;b.textContent="✅ 已复制!";setTimeout(function(){b.textContent=c},1500)}catch(e){alert("复制失败，请手动选中后复制")}}
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle"),c=document.getElementById("bibleCopy");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整场景设定";c.classList.remove("show")}else{d.classList.add("active");b.innerHTML="▾ 收起场景设定";c.classList.add("show");d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+async function copyBible(){var d=document.getElementById("bibleDetail"),c=document.getElementById("bibleCopy");try{await navigator.clipboard.writeText(d.innerText);c.textContent="✅ 已复制";c.classList.add("copied");setTimeout(function(){c.textContent="📋 一键复制";c.classList.remove("copied")},2000)}catch(e){c.textContent="❌ 复制失败";setTimeout(function(){c.textContent="📋 一键复制"},2000)}}
 
 const scenes=[// ── EP01_SC01 旧商场外景 ──
 {file:"A01_外景主母版.png",name:"A01 · 外景主母版",script:"「星星岛儿童乐园，1999年开的，2008年关闭。」——正面全景，千禧年风格褪色招牌，烂尾楼骨架环绕",section:"🏚️ 旧商场外景",anchor:"A01"},
