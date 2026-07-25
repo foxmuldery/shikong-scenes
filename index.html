@@ -127,6 +127,7 @@ body.with-sidebar{padding-left:190px}
 <span class="bible-tone">衰败</span><span class="bible-tone">潮湿</span><span class="bible-tone">烂尾楼</span><span class="bible-tone">千禧年</span>
 </div>
 <button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整场景设定</button>
+<button class="bible-toggle" style="margin-left:8px" onclick="copyBible()">📋 一键复制</button>
 <div class="bible-detail" id="bibleDetail">
 
 <h3>场景设定</h3>
@@ -216,6 +217,7 @@ const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")
 if(hex===PW_HASH){sessionStorage.setItem("huzu_auth","1");document.getElementById("pwGate").classList.add("hidden")}
 else{err.textContent="密码错误"}}
 function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整场景设定"}else{d.classList.add("active");b.innerHTML="▾ 收起场景设定";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+async function copyBible(){var t=document.getElementById("bibleDetail").innerText;try{await navigator.clipboard.writeText(t);var b=event.target,c=b.textContent;b.textContent="✅ 已复制!";setTimeout(function(){b.textContent=c},1500)}catch(e){alert("复制失败，请手动选中后复制")}}
 
 const scenes=[// ── EP01_SC01 旧商场外景 ──
 {file:"A01_外景主母版.png",name:"A01 · 外景主母版",script:"「星星岛儿童乐园，1999年开的，2008年关闭。」——正面全景，千禧年风格褪色招牌，烂尾楼骨架环绕",section:"🏚️ 旧商场外景",anchor:"A01"},
