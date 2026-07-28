@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>麻花 · 人物造型图集</title>
+<title>晓晓 · 人物造型图集</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",serif;min-height:100vh}
@@ -18,24 +18,6 @@ body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",
 .bible-definition em{font-style:normal;color:#e0d4b0}
 .bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
 .bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
-.bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin:16px 0 0}
-.bible-toggle:hover{
-.bible-copy{display:inline-block;font-size:12px;letter-spacing:.08em;color:rgba(160,140,110,.4);cursor:pointer;padding:6px 16px;border:1px solid rgba(180,150,100,.15);border-radius:4px;background:transparent;transition:all .25s;margin-left:10px;vertical-align:middle}
-.bible-copy:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
-.bible-copy.copied{color:rgba(160,200,140,.7);border-color:rgba(160,200,140,.3)}
-color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
-.bible-detail{display:none;max-width:900px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto}
-.bible-detail.active{display:block}
-.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
-.bible-detail h3:first-child{margin-top:0}
-.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
-.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75)}
-.bible-detail ul{padding-left:20px;margin:6px 0}
-.bible-detail li{margin:3px 0}
-.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
-.bible-detail th,.bible-detail td{padding:8px 12px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75)}
-.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05)}
-.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
 .section-title{display:flex;align-items:center;gap:14px;max-width:900px;margin:48px auto 18px;padding:0 24px}
 .section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
 .section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
@@ -72,81 +54,54 @@ color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180
 </style>
 </head>
 <body>
-
-<div class="pw-gate" id="pwGate">
-<div class="pw-box">
-<h3>🔒 受限访问</h3>
-<div class="pw-sub">请输入密码以继续</div>
-<input type="password" id="pwInput" placeholder="······" onkeydown="if(event.key==='Enter')checkPw()">
-<button onclick="checkPw()">进 入</button>
-<div class="pw-err" id="pwErr"></div>
-</div>
-</div>
-
+<div class="pw-gate" id="pwGate"><div class="pw-box"><h3>🔒 受限访问</h3><div class="pw-sub">请输入密码以继续</div><input type="password" id="pwInput" placeholder="······" onkeydown="if(event.key==='Enter')checkPw()"><button onclick="checkPw()">进 入</button><div class="pw-err" id="pwErr"></div></div></div>
 <header class="hero">
 <a class="back" href="../index.html">← 返回角色选择</a>
 <p class="sub">失控游戏 · EP01</p>
-<h1>麻 花</h1>
+<h1>晓 晓</h1>
 <div class="bible-core">
-<div class="bible-definition"><em>麻花</em> —— 约8岁，星星岛异常空间核心角色。<br>浅黄色旧工装背心 + 蓝白格裙 + 红蓝双色辫绳。<br>她不是鬼童，不是NPC，是<em>「没有离开的孩子」</em>。</div>
-<div class="bible-tones"><span class="bible-tone">~8岁</span><span class="bible-tone">浅黄背心</span><span class="bible-tone">红蓝辫绳</span><span class="bible-tone">记忆残留</span><span class="bible-tone">等待</span></div>
-<button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整造型圣经</button><button class="bible-copy" id="bibleCopy" onclick="copyBible()">📋 复制圣经</button>
-<div class="bible-detail" id="bibleDetail">
-<h3>角色定位</h3>
-<p>麻花（MH-08），约8岁。不是鬼童、不是NPC、不是游戏引导员。她是晓晓没有被系统删除掉的真实记忆残留。代表：等待、不完整、没有被听完的话、没有被修补的真实。</p>
-<h3>核心视觉命题</h3>
-<blockquote>一个2001年中国县城儿童乐园里没有离开的孩子。被遗忘但仍然认真生活的孩子。</blockquote>
-<h3>剪影识别</h3>
-<ul><li>儿童比例（8岁左右身高）</li><li>两条麻花辫（红蓝双色辫绳）</li><li>浅黄色工作背心（有「工作证」胸牌和星星徽章）</li><li>蓝白格纹裙</li><li>磨损的白色魔术贴运动鞋</li></ul>
-<h3>服装系统</h3>
-<table>
-<tr><th>部位</th><th>描述</th></tr>
-<tr><td>外层</td><td>浅黄色旧工装背心 — 磨损、污渍、拉链、胸袋、「工作证」工牌 + 星星徽章</td></tr>
-<tr><td>内搭</td><td>浅米色/白色短袖T恤 — 领口有轻微脏污</td></tr>
-<tr><td>下装</td><td>蓝白格纹裙（核心识别元素之一）</td></tr>
-<tr><td>鞋袜</td><td>白色中筒袜 + 白色魔术贴运动鞋 — 磨损、积灰</td></tr>
-</table>
-<h3>发型</h3>
-<ul><li>黑色双麻花辫，两根辫绳分别为红色和蓝色</li><li>空气刘海，碎发自然</li><li>辫子可以一高一低（有生活感）</li></ul>
-<h3>颜色系统</h3>
-<table>
-<tr><td>浅黄色</td><td>外层工装背心 — 2001年县城儿童乐园工作服色</td></tr>
-<tr><td>红+蓝</td><td>辫绳颜色 — 左红右蓝或反之，核心识别</td></tr>
-<tr><td>蓝白格</td><td>裙装 — 千禧年儿童服装经典元素</td></tr>
-<tr><td>灰蓝</td><td>长裤/运动裤（替换裙装时）</td></tr>
-</table>
-<h3>角色核心</h3>
-<blockquote>麻花不是鬼童。她的形象应该让观众第一次看到时感到一点点不安，但第二次看到时只想抱住她。她代表这个异常空间里唯一值得保护的东西。</blockquote>
-<h3>禁止方向</h3>
-<blockquote>恐怖鬼童 · 日系哥特萝莉 · 干净新衣 · 现代童装品牌感 · 过度可爱化 · NPC引导员</blockquote>
-</div>
+<div class="bible-definition"><em>晓晓</em> —— 麻花的原体，真实存在过的孩子。<br>浅黄外套 + 蓝白格裙 + 红色小包。<br>麻花是她被删除失败后的<em>记忆残片</em>，晓晓代表那个<em>「真实存在过的快乐」</em>。</div>
+<div class="bible-tones"><span class="bible-tone">~8岁</span><span class="bible-tone">浅黄</span><span class="bible-tone">蓝白格</span><span class="bible-tone">红色小包</span><span class="bible-tone">真实</span></div>
 </div>
 </header>
-
 <div class="section-title"><div class="line"></div><h2>▎📸 造型参考</h2><div class="line"></div></div>
 <div class="gallery" id="gallery"></div>
-
 <div class="lightbox" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><span class="lb-nav lb-prev" id="lbPrev">&#8249;</span><img src="" alt="" id="lbImg"><div class="lb-info" id="lbInfo"></div><span class="lb-nav lb-next" id="lbNext">&#8250;</span></div>
-<div class="footer">失 控 游 戏 · 麻 花</div>
-
+<div class="footer">失 控 游 戏 · 晓 晓</div>
 <script>
 (function(){if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden");return}})();
 const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
 async function checkPw(){var i=document.getElementById("pwInput"),e=document.getElementById("pwErr"),g=document.getElementById("pwGate");if(!i.value){e.textContent="请输入密码";return}var h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(i.value));var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");if(hex===PW_HASH){g.classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误，请重试";i.value="";i.focus()}}
-
-function copyBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleCopy");var t=d.innerText;navigator.clipboard.writeText(t).then(function(){b.textContent="✓ 已复制";b.classList.add("copied");setTimeout(function(){b.textContent="📋 复制圣经";b.classList.remove("copied")},2000)})}
-
-function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整造型圣经"}else{d.classList.add("active");b.innerHTML="▾ 收起造型圣经";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
-
 const items=[
-{name:"正面肖像",thumb:"thumbs/正面肖像.png",orig:"originals/正面肖像.png"},
-{name:"近景特写",thumb:"thumbs/近景特写.png",orig:"originals/近景特写.png"},
-{name:"全身正面站立",thumb:"thumbs/全身正面站立.png",orig:"originals/全身正面站立.png"},
-{name:"全身_背面",thumb:"thumbs/全身_背面.png",orig:"originals/全身_背面.png"},
-{name:"多视角参考图",thumb:"thumbs/多视角参考图.png",orig:"originals/多视角参考图.png"},
-{name:"服装设计参考图",thumb:"thumbs/服装设计参考图.png",orig:"originals/服装设计参考图.png"},
+{name:"正面正视",thumb:"thumbs/正面正视.png",orig:"originals/正面正视.png"},
+{name:"左侧正侧",thumb:"thumbs/左侧正侧.png",orig:"originals/左侧正侧.png"},
+{name:"右侧正侧",thumb:"thumbs/右侧正侧.png",orig:"originals/右侧正侧.png"},
+{name:"左侧45度",thumb:"thumbs/左侧45度.png",orig:"originals/左侧45度.png"},
+{name:"右侧45度",thumb:"thumbs/右侧45度.png",orig:"originals/右侧45度.png"},
+{name:"仰视角度",thumb:"thumbs/仰视角度.png",orig:"originals/仰视角度.png"},
+{name:"俯视角度",thumb:"thumbs/俯视角度.png",orig:"originals/俯视角度.png"},
+{name:"正面全身",thumb:"thumbs/正面全身.png",orig:"originals/正面全身.png"},
+{name:"背面全身",thumb:"thumbs/背面全身.png",orig:"originals/背面全身.png"},
+{name:"侧面全身",thumb:"thumbs/侧面全身.png",orig:"originals/侧面全身.png"},
+{name:"动态站姿",thumb:"thumbs/动态站姿.png",orig:"originals/动态站姿.png"},
+{name:"特写细节",thumb:"thumbs/特写细节.png",orig:"originals/特写细节.png"},
+{name:"默认状态",thumb:"thumbs/默认状态.png",orig:"originals/默认状态.png"},
+{name:"角色招牌",thumb:"thumbs/角色招牌.png",orig:"originals/角色招牌.png"},
+{name:"轻微微笑",thumb:"thumbs/轻微微笑.png",orig:"originals/轻微微笑.png"},
+{name:"思考",thumb:"thumbs/思考.png",orig:"originals/思考.png"},
+{name:"疑惑",thumb:"thumbs/疑惑.png",orig:"originals/疑惑.png"},
+{name:"惊讶",thumb:"thumbs/惊讶.png",orig:"originals/惊讶.png"},
+{name:"恐惧",thumb:"thumbs/恐惧.png",orig:"originals/恐惧.png"},
+{name:"悲伤",thumb:"thumbs/悲伤.png",orig:"originals/悲伤.png"},
+{name:"愤怒",thumb:"thumbs/愤怒.png",orig:"originals/愤怒.png"},
+{name:"犹豫",thumb:"thumbs/犹豫.png",orig:"originals/犹豫.png"},
+{name:"压力状态",thumb:"thumbs/压力状态.png",orig:"originals/压力状态.png"},
+{name:"释然",thumb:"thumbs/释然.png",orig:"originals/释然.png"},
+{name:"剪影识别系统",thumb:"thumbs/剪影识别系统.png",orig:"originals/剪影识别系统.png"},
+{name:"服装结构与材质板",thumb:"thumbs/服装结构与材质板.png",orig:"originals/服装结构与材质板.png"},
+{name:"脸部_眼镜_发型细节",thumb:"thumbs/脸部_眼镜_发型细节.png",orig:"originals/脸部_眼镜_发型细节.png"},
+{name:"随身物资产",thumb:"thumbs/随身物资产.png",orig:"originals/随身物资产.png"},
 ];
-
 const g=document.getElementById("gallery"),lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
 let cur=0;
 function openLb(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
