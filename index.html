@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控游戏 · 分镜故事板</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Noto Serif SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:#0a0a14;color:#e0d8c8;line-height:1.6;overflow-x:hidden}
+
+.pw-gate{position:fixed;inset:0;z-index:9999;background:rgba(6,6,18,.96);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px}
+.pw-gate.hidden{display:none}
+.pw-gate h1{font-size:28px;letter-spacing:.15em;color:#d4c8a8;font-weight:400}
+.pw-gate .pw-box{display:flex;gap:8px}
+.pw-gate input{width:220px;padding:10px 16px;font-size:15px;background:#111524;
+  border:1px solid rgba(180,160,120,.25);border-radius:4px;color:#e0d4b8;outline:none;
+  font-family:inherit;letter-spacing:.08em}
+.pw-gate input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate button{padding:10px 24px;font-size:14px;background:rgba(180,150,100,.15);
+  border:1px solid rgba(180,150,100,.35);border-radius:4px;color:#d4c8a8;
+  cursor:pointer;letter-spacing:.1em;font-family:inherit;transition:all .25s}
+.pw-gate button:hover{background:rgba(200,170,120,.25);border-color:rgba(200,170,120,.5)}
+.pw-error{font-size:12px;color:#c06050;min-height:18px;letter-spacing:.05em}
+
+.app{display:flex;min-height:100vh}
+.main{flex:1;min-width:0;margin-left:210px}
+
+.sidebar{position:fixed;top:0;left:0;width:210px;height:100vh;background:#0d1020;
+  border-right:1px solid rgba(180,160,120,.12);z-index:100;overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-header{padding:22px 16px 14px;border-bottom:1px solid rgba(180,160,120,.1);text-align:center}
+.sidebar-header .logo{font-size:17px;letter-spacing:.12em;color:#e0d4b8}
+.sidebar-header .ver{font-size:11px;color:rgba(180,150,110,.35);margin-top:4px;letter-spacing:.06em}
+.sidebar-nav{flex:1;padding:6px 0;overflow-y:auto}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:8px 14px;font-size:12px;
+  color:rgba(200,180,140,.45);text-decoration:none;border-left:2px solid transparent;transition:all .25s}
+.sidebar-nav a:hover{color:rgba(230,210,160,.8);background:rgba(200,170,120,.05)}
+.sidebar-nav a.active{color:#e0d4b8;background:rgba(200,170,120,.1);border-left-color:rgba(200,170,120,.6)}
+.sidebar-nav a .nav-num{font-size:10px;color:rgba(180,150,110,.25);background:rgba(180,160,120,.06);
+  padding:1px 6px;border-radius:8px;margin-left:auto}
+
+.hamburger{display:none;position:fixed;top:12px;left:12px;z-index:200;width:36px;height:36px;
+  background:#111524;border:1px solid rgba(180,160,120,.2);border-radius:6px;cursor:pointer}
+.hamburger span{display:block;width:18px;height:1.5px;background:rgba(200,170,120,.6);margin:3px auto}
+@media(max-width:900px){.sidebar{display:none}.main{margin-left:0}
+  .hamburger{display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .sidebar.mobile-open{display:flex!important;position:fixed;z-index:150;width:220px;box-shadow:4px 0 30px rgba(0,0,0,.8)}}
+
+.hero{padding:56px 40px 32px;text-align:center;border-bottom:1px solid rgba(180,160,120,.08)}
+.hero h1{font-size:42px;letter-spacing:.12em;color:#e0d4b8;font-weight:400;margin-bottom:8px}
+.hero .sub{font-size:14px;color:rgba(200,170,130,.4);letter-spacing:.08em}
+
+.scene-section{padding:32px 40px 0}
+.scene-header{margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid rgba(180,160,120,.1)}
+.scene-header h2{font-size:22px;color:#d4c8a8;font-weight:400;letter-spacing:.06em}
+.scene-header .meta{font-size:12px;color:rgba(180,150,110,.4);margin-top:4px;letter-spacing:.04em}
+
+.script-box{margin-bottom:24px;padding:18px 22px;background:rgba(200,170,120,.03);
+  border-left:2px solid rgba(180,150,100,.2);border-radius:0 4px 4px 0;font-size:13px;
+  color:rgba(200,180,140,.5);line-height:1.8;max-height:200px;overflow-y:auto;
+  position:relative;letter-spacing:.04em}
+.script-box.expanded{max-height:none}
+.script-toggle{font-size:11px;color:rgba(180,150,100,.4);cursor:pointer;margin-top:6px;letter-spacing:.06em}
+.script-toggle:hover{color:rgba(220,190,130,.7)}
+.script-copy{position:absolute;top:12px;right:16px;font-size:11px;color:rgba(180,150,100,.35);
+  cursor:pointer;padding:4px 12px;border:1px solid rgba(180,150,100,.15);border-radius:3px;
+  background:transparent;transition:all .25s;letter-spacing:.06em;font-family:inherit}
+.script-copy:hover{color:rgba(220,190,130,.7);border-color:rgba(180,150,100,.35)}
+.script-copy.copied{color:#6ec9a8;border-color:rgba(110,201,168,.4);background:rgba(110,201,168,.06)}
+
+.shot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:24px;padding-bottom:40px}
+.shot-card{background:#0f1224;border:1px solid rgba(180,160,120,.08);border-radius:6px;
+  overflow:hidden;transition:border-color .3s,transform .2s;cursor:pointer}
+.shot-card:hover{border-color:rgba(200,170,120,.2);transform:translateY(-2px)}
+.shot-card .shot-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#0a0a18}
+.shot-card .shot-info{padding:14px 16px}
+.shot-card .shot-num{font-size:18px;color:#d4c8a8;letter-spacing:.04em;margin-bottom:6px}
+.shot-card .shot-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.shot-badge{font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:.04em;
+  background:rgba(180,160,120,.08);color:rgba(200,180,140,.5)}
+.shot-badge.type{background:rgba(180,150,100,.12);color:rgba(220,190,130,.7)}
+.shot-badge.angle{background:rgba(140,160,180,.1);color:rgba(160,190,210,.6)}
+.shot-badge.move{background:rgba(160,140,180,.1);color:rgba(190,170,210,.6)}
+.shot-card .shot-dialogue{font-size:12px;color:rgba(200,180,140,.45);margin-top:6px;
+  padding-top:8px;border-top:1px solid rgba(180,160,120,.06);letter-spacing:.04em;font-style:italic;min-height:20px}
+.shot-card .shot-desc{font-size:11px;color:rgba(180,160,130,.35);margin-top:4px;letter-spacing:.03em}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(4,4,14,.94);
+  align-items:center;justify-content:center;flex-direction:column;gap:16px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:85vh;object-fit:contain;border-radius:4px;box-shadow:0 4px 40px rgba(0,0,0,.6)}
+.lightbox .lb-info{font-size:13px;color:rgba(200,180,140,.5);text-align:center;letter-spacing:.04em}
+.lightbox .lb-close{position:absolute;top:20px;right:28px;font-size:28px;
+  color:rgba(200,170,120,.5);cursor:pointer;transition:color .25s;line-height:1}
+.lightbox .lb-close:hover{color:rgba(240,210,160,.8)}
+.lightbox .lb-nav{font-size:36px;color:rgba(200,170,120,.35);cursor:pointer;
+  position:absolute;top:50%;transform:translateY(-50%);transition:color .25s;user-select:none}
+.lightbox .lb-nav:hover{color:rgba(240,210,160,.7)}
+.lightbox .lb-prev{left:24px}
+.lightbox .lb-next{right:24px}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#0a0a14}
+::-webkit-scrollbar-thumb{background:rgba(180,160,120,.15);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:rgba(180,160,120,.25)}
+</style>
+</head>
+<body>
+
+<div class="pw-gate" id="pwGate">
+  <h1>失控游戏 · 分镜故事板</h1>
+  <div class="pw-box">
+    <input type="password" id="pwInput" placeholder="输入访问密码" onkeydown="if(event.key==='Enter')checkPw()">
+    <button onclick="checkPw()">进入</button>
+  </div>
+  <div class="pw-error" id="pwError"></div>
+</div>
+
+<button class="hamburger" id="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">失控游戏</div>
+    <div class="ver">分镜故事板</div>
+  </div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <a href="#top" data-section="top">🎬 总览</a>
+  </nav>
+  <div class="sidebar-footer" id="sidebarFooter" style="padding:12px 16px;border-top:1px solid rgba(180,160,120,.1);font-size:10px;color:rgba(180,150,110,.3);text-align:center">0 场 · 0 镜</div>
+</aside>
+
+<main class="main">
+  <div id="top"></div>
+  <section class="hero">
+    <h1>分镜故事板</h1>
+    <p class="sub">失控游戏 · 影视分镜预览</p>
+  </section>
+  <div id="sceneContainer"></div>
+</main>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <span class="lb-close" onclick="closeLightbox()">&times;</span>
+  <span class="lb-nav lb-prev" onclick="event.stopPropagation();navLightbox(-1)">‹</span>
+  <img id="lbImg" src="" alt="" onclick="event.stopPropagation()">
+  <div class="lb-info" id="lbInfo"></div>
+  <span class="lb-nav lb-next" onclick="event.stopPropagation();navLightbox(1)">›</span>
+</div>
+
+<script>
+var PW_HASH="019be3978f56bb5b69e7c4c2e64b9c3f5ad4d9d0e7a3b4c1d2e5f6a7b8c9d0e1";
+var PW_KEY="storyboard_auth";
+
+async function sha256(m){var b=new TextEncoder().encode(m);var h=await crypto.subtle.digest("SHA-256",b);return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,"0")).join("")}
+async function checkPw(){var input=document.getElementById("pwInput").value;var hash=await sha256(input);if(hash===PW_HASH){sessionStorage.setItem(PW_KEY,"1");document.getElementById("pwGate").classList.add("hidden")}else{document.getElementById("pwError").textContent="密码错误，请重试"}}
+if(sessionStorage.getItem(PW_KEY)==="1")document.getElementById("pwGate").classList.add("hidden");
+
+var STORYBOARD_DATA=[{
+  id:"kaichang",title:"开场 · 星星岛",scene_num:1,
+  script:"（剧本原文待补充 — 星星岛废弃游乐场，主角发现幽冥小火车与DV录像带线索）",
+  shots:[
+    {id:1,file:"开场_01_全景_平拍.png",shot_type:"全景",camera_angle:"平拍",camera_movement:"固定",dialogue:"无对白",description_zh:"废弃室内儿童游乐区，摇摇马亮着黄灯，彩色泡沫垫反光，窗外透进冷蓝光",duration:5},
+    {id:2,file:"开场_02_全景_平拍.png",shot_type:"全景",camera_angle:"平拍",camera_movement:"固定",dialogue:"无对白",description_zh:"昏暗生日房间，桌上放着蛋糕和DV摄像机，彩色串灯悬挂",duration:4},
+    {id:3,file:"开场_03_全景_平拍.png",shot_type:"全景",camera_angle:"平拍",camera_movement:"固定",dialogue:"无对白",description_zh:"地下隧道前，红黄色诡异小火车静止停靠，车头空洞眼洞",duration:4},
+    {id:4,file:"开场_04_全景_平拍.png",shot_type:"全景",camera_angle:"平拍",camera_movement:"固定",dialogue:"无对白",description_zh:"同机位，小火车车灯亮起，前方隧道更加黑暗深邃",duration:3},
+    {id:5,file:"开场_05_全景_平拍.png",shot_type:"全景",camera_angle:"平拍",camera_movement:"固定",dialogue:"无对白",description_zh:"小火车车厢内部视角，黄色座位空无一人，安全锁杆放下",duration:3},
+    {id:6,file:"开场_06_全景_平拍.png",shot_type:"全景",camera_angle:"平拍",camera_movement:"固定",dialogue:"无对白",description_zh:"站台全景，小火车旁出现球童男孩雕像，抱足球、戴红帽、诡异微笑",duration:4},
+    {id:7,file:"开场_07_特写_第一人称.png",shot_type:"特写",camera_angle:"第一人称",camera_movement:"手持",dialogue:"无对白",description_zh:"第一人称POV，双手持DV摄像机坐在小火车内",duration:3},
+    {id:8,file:"开场_08_近景_微俯.png",shot_type:"近景",camera_angle:"微俯",camera_movement:"固定",dialogue:"无对白",description_zh:"摄像机LCD屏回放——维修工人背对镜头蹲在轨道旁检修控制箱",duration:4}
+  ]
+}];
+
+function buildGallery(){
+  var nav=document.getElementById("sidebarNav"),container=document.getElementById("sceneContainer"),totalShots=0;
+  STORYBOARD_DATA.forEach(function(scene,i){
+    var a=document.createElement("a");a.href="#sec-"+scene.id;a.setAttribute("data-section","sec-"+scene.id);
+    a.innerHTML='<span class="nav-emoji">🎬</span>'+scene.title+'<span class="nav-num">'+scene.shots.length+'镜</span>';
+    nav.appendChild(a);
+    var sec=document.createElement("section");sec.className="scene-section";sec.id="sec-"+scene.id;
+    var header='<div class="scene-header"><h2>第'+scene.scene_num+'场 · '+scene.title+'</h2><div class="meta">'+scene.shots.length+' 镜 · '+scene.shots.map(function(s){return s.shot_type}).filter(function(v,i,a){return a.indexOf(v)===i}).join(' / ')+'</div></div>';
+    if(scene.script){
+      var lines=scene.script.split("\n"),truncated=lines.length>6,visible=truncated?lines.slice(0,6).join("\n"):scene.script;
+      header+='<div class="script-box" id="script-'+scene.id+'"><button class="script-copy" onclick="event.stopPropagation();copyScript(\'script-'+scene.id+'\',this)">📋 复制</button><div class="script-text">'+visible.replace(/\n/g,"<br>")+'</div>';
+      if(truncated){header+='<div class="script-full" style="display:none">'+scene.script.replace(/\n/g,"<br>")+'</div><div class="script-toggle" onclick="toggleScript(\'script-'+scene.id+'\',this)">▸ 展开完整剧本</div>'}
+      header+='</div>'
+    }
+    var grid='<div class="shot-grid">';
+    scene.shots.forEach(function(shot,j){
+      grid+='<div class="shot-card" onclick="openLightbox('+i+','+j+')"><img class="shot-img" src="kaichang/web/'+shot.file+'" alt="镜'+shot.id+'" loading="lazy"><div class="shot-info"><div class="shot-num">镜 '+shot.id+'</div><div class="shot-badges"><span class="shot-badge type">'+shot.shot_type+'</span><span class="shot-badge angle">'+shot.camera_angle+'</span>'+(shot.camera_movement&&shot.camera_movement!=="固定"?'<span class="shot-badge move">'+shot.camera_movement+'</span>':'')+(shot.duration?'<span class="shot-badge">'+shot.duration+'s</span>':'')+'</div>'+(shot.description_zh?'<div class="shot-desc">'+shot.description_zh+'</div>':'')+'</div></div>'
+    });
+    grid+='</div>';sec.innerHTML=header+grid;container.appendChild(sec);totalShots+=scene.shots.length
+  });
+  document.getElementById("sidebarFooter").textContent=STORYBOARD_DATA.length+' 场 · '+totalShots+' 镜'
+}
+
+function toggleScript(id,btn){var b=document.getElementById(id),f=b.querySelector(".script-full"),t=b.querySelector(".script-text");if(f.style.display==="none"){f.style.display="block";t.style.display="none";btn.innerHTML="▾ 收起剧本"}else{f.style.display="none";t.style.display="block";btn.innerHTML="▸ 展开完整剧本"}}
+async function copyScript(id,btn){var b=document.getElementById(id),f=b.querySelector(".script-full"),t=f&&f.style.display!=="none"?f:b.querySelector(".script-text");try{await navigator.clipboard.writeText(t.innerText);btn.textContent="✅ 已复制";btn.classList.add("copied");setTimeout(function(){btn.textContent="📋 复制";btn.classList.remove("copied")},2000)}catch(e){btn.textContent="❌ 失败";setTimeout(function(){btn.textContent="📋 复制"},2000)}}
+
+var lbScene=-1,lbShot=-1;
+function openLightbox(si,sj){lbScene=si;lbShot=sj;var s=STORYBOARD_DATA[si].shots[sj];document.getElementById("lbImg").src="kaichang/web/"+s.file;document.getElementById("lbInfo").textContent="第"+STORYBOARD_DATA[si].scene_num+"场 · "+STORYBOARD_DATA[si].title+" — 镜"+s.id+" · "+s.shot_type+" · "+s.camera_angle;document.getElementById("lightbox").classList.add("open");document.body.style.overflow="hidden"}
+function closeLightbox(e){document.getElementById("lightbox").classList.remove("open");document.body.style.overflow="";lbScene=-1;lbShot=-1}
+function navLightbox(dir){if(lbScene<0)return;var s=STORYBOARD_DATA[lbScene],ns=lbShot+dir;if(ns>=0&&ns<s.shots.length)openLightbox(lbScene,ns)}
+
+var navLinks=null;
+function updateActive(){if(!navLinks)navLinks=document.querySelectorAll(".sidebar-nav a");var sy=window.scrollY+160,active=null;navLinks.forEach(function(a){var el=a.getAttribute("data-section")==="top"?null:document.getElementById(a.getAttribute("data-section"));if(a.getAttribute("data-section")==="top"&&sy<200)active=a;else if(el&&el.offsetTop<=sy)active=a});if(active){navLinks.forEach(function(a){a.classList.remove("active")});active.classList.add("active")}}
+window.addEventListener("scroll",updateActive);
+
+function toggleSidebar(){document.getElementById("sidebar").classList.toggle("mobile-open")}
+document.getElementById("sidebar").addEventListener("click",function(e){if(e.target.tagName==="A"&&window.innerWidth<=900)this.classList.remove("mobile-open")});
+
+document.addEventListener("keydown",function(e){if(document.getElementById("lightbox").classList.contains("open")){if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")navLightbox(-1);if(e.key==="ArrowRight")navLightbox(1)}});
+
+buildGallery();updateActive();
+</script>
+</body>
+</html>
