@@ -339,7 +339,48 @@ const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById
 let cur=0;
 function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
 function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
-function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function updateLb(){var s=scenes[cur
+{file:"开场场景/02b_前台母版2.png",name:"开场 · 前台全景",script:"前台接待区全景：摇摇车、生日灯箱、CRT电视、贴纸墙——比第一版更广的取景，展示柜台与月台入口的空间关系",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/09_空间动线图.png",name:"开场 · 空间动线",script:"前台→候车厅→月台的完整空间关系图。蓝色玻璃采光核从外立面贯入内部，停运扶梯与楼梯连接三层走廊",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/10_CRT系统屏幕.png",name:"开场 · CRT系统屏幕",script:"老式CRT电视蓝屏界面：已预约玩家4/5。屏幕电磁干扰，文字边缘有轻微波动，角落积灰",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/11_蓝星贴纸手机壳.png",name:"开场 · 蓝星手机壳",script:"麻花递给张杭杭的蓝色星星贴纸，已贴在手机壳上。贴纸边缘卷起，褪色但星星形状清晰",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/12_登记簿.png",name:"开场 · 登记簿",script:"星星岛开放日登记簿特写：年份从2024倒退至2008，最后一栏「设备维护人员」写着赵斌的名字",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/13_摇摇车问答.png",name:"开场 · 摇摇车问答",script:"猴子摇摇车亮起，播放走调电子琴：「爸爸的爸爸叫什么？」邹青被困在前后晃动的车上——说明牌写着「爸爸的爸爸叫爸爸。爸爸没有爸爸。」",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/14_王波攻略表.png",name:"开场 · 王波攻略表",script:"彩色打印的《星星岛内测五人小队职业配置1.7最终版》：王波-队长/规则分析，邹青-力量位/高危测试，赵蔚-观察位，K哥-机关位",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/15_内测邀请剪报.png",name:"开场 · 邀请剪报",script:"赵蔚从笔记本里翻出的打印剪报——品牌方邀请内容创作者组队探店，星星岛改为沉浸式密室体验",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/16_赵斌失联.png",name:"开场 · 赵斌失联",script:"2011年论坛帖子截图：有人说维护人员赵斌进入商场后再没出来。帖子后被删除，但有人保存了截图",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/17_关闭公告.png",name:"开场 · 关闭公告",script:"星星岛儿童乐园关闭公告——2008年正式停业。旁边附有维护人员赵斌失联的简讯",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/18_ZL落款.png",name:"开场 · ZL落款",script:"昃伦集团（ZL Group）的落款签名或水印出现在某个文件上。暗示这个旧商场背后有不同的管理者",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/19_地址重合.png",name:"开场 · 地址重合",script:"多份文件对比：星星岛儿童乐园的注册地址与昃伦集团某子公司的登记地址完全重合",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/20_南建林照片墙.png",name:"开场 · 南建林照片墙",script:"一张布满旧照片的墙壁：多张照片里出现同一个穿深蓝工服的男人背影和侧面，胸口绣着「南建林」。所有正面脸部被刻掉",section:"🎬 开场场景",anchor:""},
+{file:"小火车场景/S1_11_K哥落单.png",name:"小火车 · K哥落单",script:"周凯的手环亮起红光，CRT跳出处罚动画：一个卡通小孩独自站在球场中间。规则：「无人组队的落单小朋友，将由球童陪玩。」",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_12_周凯下坠.png",name:"小火车 · 周凯下坠",script:"运动相机里的第一人称：周凯撞过悬空铁轨、廉价地府假景和完全黑暗的楼层，坠落没有尽头",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_13_手环残留.png",name:"小火车 · 手环残留",script:"周凯的手环掉落在铁轨上，红光仍在闪烁。屏幕上显示「周凯——陪玩完成。残留已记录」",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_14_运动相机.png",name:"小火车 · 运动相机",script:"周凯挂在胸前的运动相机落地——屏幕裂了一道缝，仍在直播。镜头拍到铁轨上自己的鞋和远去的小火车",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_15_检票UI.png",name:"小火车 · 检票UI",script:"检票闸机屏幕：「有效玩家4/5。缺少一名乘客。」王波把周凯手环贴上闸机——「检测到玩家残留。有效玩家5/5。允许发车。」",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_16_组队手环.png",name:"小火车 · 组队手环",script:"四只手紧紧握住彼此：邹青、王波、张杭杭、赵蔚的手环同时亮起蓝色。周凯的手环被压在四只手之间，红灯变成蓝灯",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_17_麻花扫描.png",name:"小火车 · 麻花扫描",script:"麻花手腕上没有手环，却浮出一圈红色扫描光。系统：「发现身份缺失儿童。请在十秒内加入队伍。」姓名未知、无有效身份",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_18_临时光屏A.png",name:"小火车 · 临时光屏A",script:"麻花手腕浮出蓝色临时光屏：「临时组队成功。有效时间10分钟。」倒计时从09:59开始",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_19_临时光屏B.png",name:"小火车 · 临时光屏B",script:"光屏倒计时08:12。背景是充气肺的PVC膜壁——红光透过膜布，把所有人照成血液里的剪影",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_20_临时光屏C.png",name:"小火车 · 临时光屏C",script:"光屏倒计时03:47。车厢被PVC壁挤压，塑料外壳发出连续爆裂声。黑暗深处的吸气声越来越近",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_21_DV回放线索.png",name:"小火车 · DV回放线索",script:"DV回放画面里的麻花——4:3低像素画面中，麻花身后闪过南建林粗糙的工人手。手指无名指上有一圈褪色印痕，正拨弄小火车的投币口",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_22_薄膜穿越.png",name:"小火车 · 薄膜穿越",script:"小火车没有撞上写着「奈何桥」的水泥墙，而是穿过一层半透明薄膜。车厢里的千禧贴纸同时发出撕扯声——空白圆洞在收缩",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_23_PVC挤压.png",name:"小火车 · PVC挤压",script:"四周的PVC膜壁同时鼓起挤压小火车——粉黄蓝三色膜布上的补丁被撑到极限。车厢塑料外壳爆裂，红光透膜把所有人照成血影",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_24_肺内通道.png",name:"小火车 · 肺内通道",script:"充气肺内部通道：PVC膜壁构成隧道，补丁密布，内部红灯随呼吸明灭。每吸一次气，通道就收窄一寸",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_25_电子路牌.png",name:"小火车 · 电子路牌",script:"错误分岔月台的电子路牌特写——左侧：「左线——玩具回收」红色箭头；右侧：「右线——快乐呼吸」红色箭头。看似清楚却不可信的选择",section:"🎢 小火车场景",anchor:""},
+{file:"三楼走廊/10_捕鱼机布景楼梯.png",name:"三楼 · 捕鱼机与楼梯",script:"走廊墙上的千禧卡通贴纸空白圆洞在球童冲过时同时收缩——像几百只没有眼珠的眼睛在眨。捕鱼机屏幕里上百条卡通鱼同时翻白肚",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/11_走廊追逐.png",name:"三楼 · 走廊追逐",script:"五人带着麻花沿商场走廊狂奔。球童男孩在后方直线冲刺——红蓝残影撞穿前台柜台，木屑和奖券漫天飞。它不会拐弯，只会直线锁定",section:"🏢 三楼走廊",anchor:""},
+{file:"电梯空间/01_健身房商用电梯.png",name:"电梯 · 健身房电梯",script:"健身房走廊尽头：一台老旧商用电梯。不锈钢门板布满指纹和划痕，楼层显示屏数字跳动异常",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/02_健身房电梯b.png",name:"电梯 · 健身房电梯2",script:"另一角度：电梯门前方的走廊，消防栓、灭火器和褪色健身海报构成千禧年县城商业空间的标准配置",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/03_商业大楼电梯间.png",name:"电梯 · 商业大楼",script:"商业大楼展会电梯间：大理石地面、黄铜装饰、大型展会海报。与星星岛的破败形成强烈反差——不同时空的同一座建筑",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/04_医院电梯.png",name:"电梯 · 医院电梯",script:"医院走廊尽头：宽体医用电梯。不锈钢内部、防撞护角、输液挂钩。绿色手术指示灯在黑暗走廊里格外刺眼",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/05_四门电梯母版.png",name:"电梯 · 四门母版",script:"四台并排的老旧电梯——四扇门造型相同但锈蚀程度各异。每扇门上方都有一个损坏程度不一的楼层指示器，数字全部停在3F",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/06_电梯门叠化.png",name:"电梯 · 电梯叠化",script:"四台不同地点的电梯门在同一画面中叠化——健身房、商业大厦、医院、旧商场。完全不同的场景，完全相同的「3F」楼层标识",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/07_电梯按钮.png",name:"电梯 · 按钮面板",script:"电梯内部的楼层按钮面板特写：按键排列为1F-2F-3F-3F-4F。两个相邻的3F按钮磨损程度完全相同——像有人故意装了两个",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/08_电梯谜题.png",name:"电梯 · 电梯谜题",script:"角色们在不同电梯间里按下了不同的3F按钮——有人按了第一个，有人按了第二个。电梯门关上的瞬间，所有人的空间被交换了",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/09_ZL集团Logo.png",name:"电梯 · ZL集团Logo",script:"昃伦集团铭牌Logo特写：银色拉丝金属板，黑色楷体字「昃伦集团」。安装在电梯外侧墙壁上，出现在星星岛、商业大楼和医院三个不应该有关系的空间",section:"🛗 电梯空间",anchor:""},
+{file:"角色住所/01_张杭杭家楼道.png",name:"角色 · 张杭杭家楼道",script:"张杭杭家门口的旧楼道：发黄白墙、水泥楼梯、锈蚀消防栓。门上猫眼反射出一小块走廊灯光——普通县城居民楼的安静日常，与星星岛的异常形成对比",section:"🏠 角色住所",anchor:""},
+];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(180,160,120,.5)">${s.script}</span>`}
 function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
 function next(){cur=(cur+1)%scenes.length;updateLb()}
 document.getElementById("lbClose").addEventListener("click",closeLightbox);
