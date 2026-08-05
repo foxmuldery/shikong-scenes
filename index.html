@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控游戏 EP01 · 全引擎配音对比</title>
+<style>
+:root { --bg:#0a0a14; --panel:#12121e; --border:#26263a; --gold:#c9a96a; --text:#e0d8c8; --dim:#8a84a0; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:"PingFang SC",sans-serif; padding:16px; }
+.wrap { max-width:1400px; margin:0 auto; }
+h1 { color:var(--gold); font-size:24px; margin:0 0 6px; }
+.sub { color:var(--dim); font-size:13px; margin-bottom:20px; }
+.panel { background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:16px; margin-bottom:14px; }
+.panel h3 { color:var(--gold); font-size:16px; margin:0 0 4px; }
+.line { font-size:15px; line-height:1.6; margin:8px 0 14px; padding:10px 12px; background:#0a0a16; border-radius:8px; border-left:3px solid var(--gold); }
+.emo { font-size:12px; color:var(--dim); margin-bottom:12px; }
+.row { display:flex; gap:10px; flex-wrap:wrap; }
+.col { flex:1; min-width:150px; max-width:190px; }
+.col .tag { font-size:12px; font-weight:600; margin-bottom:6px; display:block; }
+.tag.orig { color:#e0a0a0; } .tag.fish { color:#a0e0c0; } .tag.mm { color:#a0c0e0; }
+.tag.sts { color:#e0c0a0; } .tag.vc { color:var(--gold); } .tag.cb { color:#e0a0e0; } .tag.el { color:#80e0e0; }
+.tag.cbvc { color:#ffa07a; } .tag.cbt { color:#ffd700; }
+audio { width:100%; height:34px; }
+/* 密码门 */
+.gate { position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; z-index:99; }
+.gate-box { background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:36px; max-width:340px; width:100%; text-align:center; }
+.gate-box h2 { color:var(--gold); font-size:20px; margin:0 0 8px; }
+.gate-box p { color:var(--dim); font-size:13px; margin:0 0 20px; }
+.gate-box input { width:100%; padding:12px; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-size:15px; box-sizing:border-box; margin-bottom:12px; }
+.gate-box button { width:100%; padding:12px; background:var(--gold); color:var(--bg); border:0; border-radius:8px; font-size:15px; font-weight:600; cursor:pointer; }
+.gate-err { color:#e06a6a; font-size:13px; margin-top:10px; display:none; }
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <h2>🎧 全引擎配音对比</h2>
+    <p>失控游戏 EP01 · 请输入访问密码</p>
+    <input type="password" id="gateInput" placeholder="访问密码" autofocus>
+    <button id="gateBtn">进入</button>
+    <div class="gate-err" id="gateErr">密码错误</div>
+  </div>
+</div>
+
+<div class="wrap" id="main" style="display:none">
+  <h1>🎧 全引擎配音对比 · 失控游戏EP01</h1>
+  <div class="sub">6 条原声录音 × 全部配音引擎：🎤 原声　🐟 Fish　🔷 MiniMax　✨ STS　🎭 Seed-VC　🔥 Chatterbox VC　🟡 Chatterbox TTS　💎 ElevenLabs STS</div>
+  <div id="cases"></div>
+</div>
+
+<script>
+const PASSWORD = 'tusun2026';
+const PASS_KEY = 'vm_compare_auth';
+if (sessionStorage.getItem(PASS_KEY) === PASSWORD || localStorage.getItem(PASS_KEY) === PASSWORD) {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('main').style.display = 'block';
+}
+document.getElementById('gateBtn').onclick = () => {
+  const v = document.getElementById('gateInput').value.trim();
+  if (v === PASSWORD) {
+    localStorage.setItem(PASS_KEY, PASSWORD);
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('main').style.display = 'block';
+  } else {
+    document.getElementById('gateErr').style.display = 'block';
+  }
+};
+document.getElementById('gateInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('gateBtn').click(); });
+
+const CASES = [
+  { id:'S02_01', role:'邹青 · 热情直播状态',
+    text:'家人们！今天的训练到此结束！明天有大事，之前说的星星岛废墟探险要内测，明天我全程直播！',
+    emo:'明快偏快 · 明亮强力度 · 运动后轻微喘息',
+    files:{
+      orig:'S02_01.webm', fish:'S02_01_邹青_Fish.mp3', mm:'S02_01_邹青_MiniMax.mp3', sts:'S02_01_邹青_STS.mp3',
+      vc:'vc_真人_邹青_兴奋.wav', cb:'chatterbox_邹青_兴奋.mp3', el:'eleven_邹青_兴奋.mp3',
+      cbvc:'engine/cbvc_S02_01_邹青.wav', cbt:'engine/cbt_S02_01_邹青.wav', elsts:'engine/elsts_S02_01_邹青.mp3' } },
+  { id:'S03_05', role:'王波 · 进入擅长领域后的专注',
+    text:'集合地点商场侧门，时间下午三点……攻略确认了三遍，应该没问题。',
+    emo:'偏快但逐字清楚 · 中等力度 · 关键词略重不做演讲腔',
+    files:{ orig:'S03_05.webm', fish:'S03_05_王波_Fish.mp3', mm:'S03_05_王波_MiniMax.mp3', sts:'S03_05_王波_STS.mp3',
+      cbvc:'engine/cbvc_S03_05_王波.wav', cbt:'engine/cbt_S03_05_王波.wav', elsts:'engine/elsts_S03_05_王波.mp3' } },
+  { id:'S04_06', role:'张杭杭 · 疲惫和轻微后悔',
+    text:'困死了，明天的拿什么探险商单能不能退掉啊……给的钱也不多……',
+    emo:'偏慢 · 小音量 · 低一点尾音下坠 · 有困倦气声',
+    files:{ orig:'S04_06.webm', fish:'S04_06_张杭杭_Fish.mp3', mm:'S04_06_张杭杭_MiniMax.mp3', sts:'S04_06_张杭杭_STS.mp3',
+      cbvc:'engine/cbvc_S04_06_张杭杭.wav', cbt:'engine/cbt_S04_06_张杭杭.wav', elsts:'engine/elsts_S04_06_张杭杭.mp3' } },
+  { id:'S06_21', role:'赵蔚 · 冷静观察，情绪内收',
+    text:'你们都收到了内测邀请？',
+    emo:'中速 · 中小力度但有穿透力 · 中低音区下行收尾',
+    files:{ orig:'S06_21.webm', fish:'S06_21_赵蔚_Fish.mp3', mm:'S06_21_赵蔚_MiniMax.mp3', sts:'S06_21_赵蔚_STS.mp3',
+      cbvc:'engine/cbvc_S06_21_赵蔚.wav', cbt:'engine/cbt_S06_21_赵蔚.wav', elsts:'engine/elsts_S06_21_赵蔚.mp3' } },
+  { id:'S06_25', role:'赵蔚 · 冷静观察，情绪内收',
+    text:'我不习惯在群里说话。',
+    emo:'中速 · 中小力度但有穿透力 · 中低音区下行收尾',
+    files:{ orig:'S06_25.webm', fish:'S06_25_赵蔚_Fish.mp3', mm:'S06_25_赵蔚_MiniMax.mp3', sts:'S06_25_赵蔚_STS.mp3',
+      cbvc:'engine/cbvc_S06_25_赵蔚.wav', cbt:'engine/cbt_S06_25_赵蔚.wav', elsts:'engine/elsts_S06_25_赵蔚.mp3' } },
+  { id:'S06_32', role:'张杭杭 · 克制、略疲惫、带冷讽',
+    text:'你倒挺淡定。被扔进一个二十多年前的铁皮箱，和我挤在一起，你连这都接受？',
+    emo:'中速 · 中小力度尾音利落 · 句尾轻抬不要播音式上扬',
+    files:{ orig:'S06_32.webm', fish:'S06_32_张杭杭_Fish.mp3', mm:'S06_32_张杭杭_MiniMax.mp3', sts:'S06_32_张杭杭_STS.mp3',
+      cbvc:'engine/cbvc_S06_32_张杭杭.wav', cbt:'engine/cbt_S06_32_张杭杭.wav', elsts:'engine/elsts_S06_32_张杭杭.mp3' } },
+];
+
+const ENGINE_META = [
+  ['orig','🎤 原声','orig'], ['fish','🐟 Fish','fish'], ['mm','🔷 MiniMax','mm'], ['sts','✨ STS','sts'],
+  ['vc','🎭 Seed-VC','vc'], ['cb','🔥 ChatterboxVC','cb'],
+  ['cbvc','🔶 CBVC','cbvc'], ['cbt','🟡 CBTTS','cbt'], ['elsts','💎 ElevenSTS','el'],
+];
+
+document.getElementById('cases').innerHTML = CASES.map(c => {
+  const cols = ENGINE_META.map(([key,label,cls]) => {
+    const f = c.files[key];
+    if (!f) return '';
+    return `<div class="col"><span class="tag ${cls}">${label}</span>
+      <audio controls preload="none" src="${encodeURIComponent(f)}"></audio></div>`;
+  }).join('');
+  return `<div class="panel">
+    <h3>${c.id} · ${c.role}</h3>
+    <div class="line">「${c.text}」</div>
+    <div class="emo">${c.emo}</div>
+    <div class="row">${cols}</div>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>
