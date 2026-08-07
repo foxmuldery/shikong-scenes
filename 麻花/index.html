@@ -56,7 +56,11 @@ color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180
 .lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
 .lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
 .lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px}
-.footer{text-align:center;padding:40px 20px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+.footer{
+.voice-section{max-width:900px;margin:0 auto 8px;padding:0 28px}
+.voice-section .voice-row{display:flex;gap:16px;flex-wrap:wrap}
+.voice-section audio{flex:1;min-width:280px;height:36px;border-radius:6px;background:#111524;filter:invert(.9) hue-rotate(180deg)}
+text-align:center;padding:40px 20px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
 .pw-gate{position:fixed;inset:0;z-index:9999;background:#0d1020;display:flex;align-items:center;justify-content:center;flex-direction:column}
 .pw-gate.hidden{display:none}
 .pw-gate .pw-box{text-align:center;padding:48px 40px;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:12px;max-width:380px;width:90%}
@@ -123,6 +127,12 @@ color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180
 </div>
 </header>
 
+<div 
+<div class="voice-section">
+<div class="voice-row">
+<audio controls src="麻花晓晓-我知道。不知道名字.mp3"></audio>
+<audio controls src="麻花晓晓-爸爸，你听见了吗.mp3"></audio>
+</div></div>
 <div class="section-title"><div class="line"></div><h2>▎📸 造型参考</h2><div class="line"></div></div>
 <div class="gallery" id="gallery"></div>
 
