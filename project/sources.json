@@ -1,0 +1,87 @@
+{
+  "project": "失控游戏",
+  "target": "foxmuldery/shikong-scenes",
+  "status": "complete-source-trees-verified",
+  "sources": [
+    {
+      "number": "069",
+      "slug": "characters",
+      "label": "角色造型",
+      "repository": "foxmuldery/shikong-game-characters",
+      "commit": "0dc761cf4429d25b22be9f6e1c30584f9ea9bb81",
+      "tree": "143ace0c8f16c9a4251eb30482565fd808929c3a",
+      "files": 531,
+      "verified_tree": "143ace0c8f16c9a4251eb30482565fd808929c3a",
+      "entry_exists": true
+    },
+    {
+      "number": "070",
+      "slug": "reference",
+      "label": "视觉参考",
+      "repository": "foxmuldery/shikong-game-reference",
+      "commit": "da18a08f24a14255a61295adeb596d80cd4a3e04",
+      "tree": "bd1f8a9fa61ec736cd93bab3dfd989db7a1ea84b",
+      "files": 89,
+      "verified_tree": "bd1f8a9fa61ec736cd93bab3dfd989db7a1ea84b",
+      "entry_exists": true
+    },
+    {
+      "number": "071",
+      "slug": "ghost-train",
+      "label": "幽灵列车",
+      "repository": "foxmuldery/shikong-ghost-train",
+      "commit": "38bb4df824e5dad8a3ef97edb7eb71c80f76a67c",
+      "tree": "27a4deed5a95307983058aab802f9a6a67f6565a",
+      "files": 11,
+      "verified_tree": "27a4deed5a95307983058aab802f9a6a67f6565a",
+      "entry_exists": true
+    },
+    {
+      "number": "072",
+      "slug": "props",
+      "label": "道具",
+      "repository": "foxmuldery/shikong-props",
+      "commit": "9ed85cf8a99b6e1066dc995bc65fecefe174eece",
+      "tree": "702ec61b7cb5f633d85f4d9ba5cccd45be521dc4",
+      "files": 29,
+      "verified_tree": "702ec61b7cb5f633d85f4d9ba5cccd45be521dc4",
+      "entry_exists": true
+    },
+    {
+      "number": "073",
+      "slug": "scenes",
+      "label": "场景",
+      "repository": "foxmuldery/shikong-scenes",
+      "commit": "daed21eedaccc647b7d82a73ecb3f9782e0f0019",
+      "tree": "e19a5102350513338ba9e7215f783ddbce27f4ed",
+      "files": 175,
+      "verified_tree": "e19a5102350513338ba9e7215f783ddbce27f4ed",
+      "entry_exists": true
+    },
+    {
+      "number": "074",
+      "slug": "storyboard",
+      "label": "分镜",
+      "repository": "foxmuldery/shikong-storyboard",
+      "commit": "87949fde5997bb870125cdcb6d003c2aa17e5f1e",
+      "tree": "ed47a4be0f220cb2e9e247fe0bd0810720e9bf8d",
+      "files": 9,
+      "verified_tree": "ed47a4be0f220cb2e9e247fe0bd0810720e9bf8d",
+      "entry_exists": true
+    },
+    {
+      "number": "075",
+      "slug": "voice",
+      "label": "音色比较",
+      "repository": "foxmuldery/shikong-voice-compare",
+      "commit": "809d8e52a5e19732e42d816568cb275c3fff3e15",
+      "tree": "c3637c7496c7752b8951a45a0ab9b56ad56497f9",
+      "files": 46,
+      "verified_tree": "c3637c7496c7752b8951a45a0ab9b56ad56497f9",
+      "entry_exists": true
+    }
+  ],
+  "original_repositories_modified": false,
+  "old_homepage_modified": false,
+  "scope": "Default-branch Git histories and exact file trees; no external databases, browser storage, Releases, or LFS hydration claimed"
+}
