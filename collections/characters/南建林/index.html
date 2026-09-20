@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南建林 · 人物造型图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",serif;min-height:100vh}
+.app{display:flex;min-height:100vh}
+.main{flex:1;min-width:0;margin-left:200px}
+
+.sidebar{position:fixed;top:0;left:0;width:200px;height:100vh;background:#0d1020;border-right:1px solid rgba(180,160,120,.12);z-index:100;overflow-y:auto;display:flex;flex-direction:column;padding:24px 0}
+.sidebar-header{padding:0 20px 20px;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-header .logo{font-size:18px;letter-spacing:.12em;color:#e0d4b8;font-weight:300}
+.sidebar-header .ver{font-size:11px;color:rgba(180,150,110,.35);margin-top:4px;letter-spacing:.08em}
+.sidebar-nav{flex:1;padding:0 12px}
+.sidebar-nav a{display:block;padding:10px 16px;font-size:14px;color:rgba(200,180,140,.5);text-decoration:none;letter-spacing:.06em;border-radius:6px;transition:all .25s;margin-bottom:2px;border-left:2px solid transparent}
+.sidebar-nav a:hover{color:rgba(230,210,160,.85);background:rgba(200,170,120,.06);border-left-color:rgba(200,170,120,.3)}
+.sidebar-nav a.active{color:#e0d4b8;background:rgba(200,170,120,.1);border-left-color:rgba(200,170,120,.6)}
+.sidebar-nav .nav-count{font-size:11px;color:rgba(180,150,110,.3);float:right;margin-top:2px}
+.sidebar-footer{padding:16px 20px 8px;border-top:1px solid rgba(180,160,120,.08);font-size:11px;color:rgba(170,150,110,.3);letter-spacing:.06em}
+.sidebar-back{padding:0 20px 12px;border-bottom:1px solid rgba(180,160,120,.1);margin-bottom:16px}
+.sidebar-back a{font-size:12px;color:rgba(180,150,120,.4);text-decoration:none;letter-spacing:.06em;transition:color .2s}
+.sidebar-back a:hover{color:rgba(220,190,140,.7)}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5);margin-bottom:6px}
+
+.bible-core{max-width:1100px;margin:32px auto 0;padding:0 24px;text-align:center}
+.bible-definition{display:inline-block;font-size:17px;line-height:1.8;color:#d4c8a0;letter-spacing:.06em;padding:18px 28px;border:1px solid rgba(200,170,120,.3);border-radius:6px;background:rgba(200,170,120,.05);margin-bottom:24px;max-width:800px}
+.bible-definition em{font-style:normal;color:#e0d4b0}
+.bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:20px}
+.bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
+
+.section-block{max-width:1600px;margin:0 auto;padding:0 28px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 8px;scroll-margin-top:24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+.section-desc{font-size:14px;color:rgba(180,160,120,.45);letter-spacing:.05em;margin-bottom:20px;padding-left:4px}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:start;padding-bottom:8px}
+
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:12px 16px}
+.card .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em;margin-bottom:2px}
+.card .scene-script{font-size:13px;color:rgba(210,190,160,.5);letter-spacing:.03em;line-height:1.5}
+
+.card.ref-card .img-container{aspect-ratio:3/4}
+.card.ref-card .img-container img{height:100%;object-fit:cover}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;transition:color .2s;z-index:1001;user-select:none}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.7}
+
+.footer{
+/* ── Password Gate ── */
+.pw-gate{position:fixed;inset:0;z-index:9999;background:#0d1020;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pw-gate.hidden{display:none}
+.pw-gate .pw-box{text-align:center;padding:48px 40px;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:12px;max-width:380px;width:90%}
+.pw-gate .pw-box h3{font-size:20px;font-weight:300;letter-spacing:.12em;color:#e0d4b8;margin-bottom:8px}
+.pw-gate .pw-box .pw-sub{font-size:13px;color:rgba(180,160,120,.4);letter-spacing:.06em;margin-bottom:28px}
+.pw-gate .pw-box input{width:100%;padding:12px 16px;font-size:16px;letter-spacing:.1em;background:#0a0d16;border:1px solid rgba(140,120,80,.25);border-radius:6px;color:#e0d4b8;text-align:center;outline:none;transition:border-color .25s}
+.pw-gate .pw-box input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate .pw-box input::placeholder{color:rgba(150,130,100,.3)}
+.pw-gate .pw-box button{margin-top:16px;width:100%;padding:12px;font-size:16px;letter-spacing:.1em;color:#0a0a14;background:rgba(200,170,120,.7);border:none;border-radius:6px;cursor:pointer;transition:background .25s}
+.pw-gate .pw-box button:hover{background:rgba(220,190,140,.85)}
+.pw-gate .pw-err{margin-top:14px;font-size:13px;color:rgba(200,100,80,.7);letter-spacing:.05em;min-height:18px}
+text-align:center;padding:50px 20px 50px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+@media(max-width:1400px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:1000px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.sidebar{display:none}.main{margin-left:0}.gallery{grid-template-columns:1fr;gap:20px}.hero{padding:40px 16px 30px}.bible-definition{font-size:15px;padding:14px 18px}}
+</style>
+</head>
+<body>
+<div class="pw-gate" id="pwGate">
+<div class="pw-box">
+<h3>🔒 受限访问</h3>
+<div class="pw-sub">请输入密码以继续</div>
+<input type="password" id="pwInput" placeholder="······" onkeydown="if(event.key==='Enter')checkPw()">
+<button onclick="checkPw()">进 入</button>
+<div class="pw-err" id="pwErr"></div>
+</div>
+</div>
+
+
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">南建林</div>
+    <div class="ver">失控游戏 · EP01</div>
+  </div>
+  <div class="sidebar-back"><a href="../index.html">← 返回角色选择</a></div>
+  <nav class="sidebar-nav" id="sidebarNav"></nav>
+  <div class="sidebar-footer">41 张 · 3 分区</div>
+</aside>
+
+<main class="main">
+
+<header class="hero">
+<p class="subtitle">失控游戏 · EP01</p>
+<h1>南 建 林</h1>
+<div class="bible-core">
+<div class="bible-definition"><em>南建林</em> —— 麻花的父亲。星星岛儿童乐园的维修工，<br>穿着深蓝旧工服，手粗糙沾灰，无名指有一圈褪色印痕。<br>是串联整个故事的关键人物。</div>
+<div class="bible-tones"><span class="bible-tone">维修工</span><span class="bible-tone">麻花父亲</span><span class="bible-tone">深蓝工服</span><span class="bible-tone">中年</span></div>
+</div>
+</header>
+
+<div id="content-root"></div>
+<div class="footer">失 控 游 戏 · 南 建 林</div>
+</main>
+</div>
+
+<div class="lightbox" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><span class="lb-nav lb-prev" id="lbPrev">&#8249;</span><img src="" alt="" id="lbImg"><div class="lb-info" id="lbInfo"></div><span class="lb-nav lb-next" id="lbNext">&#8250;</span></div>
+
+<script>
+/* ── Password Gate ── */
+(function(){if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden");return}})();
+const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+async function checkPw(){var i=document.getElementById("pwInput"),e=document.getElementById("pwErr"),g=document.getElementById("pwGate");if(!i.value){e.textContent="请输入密码";return}var h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(i.value));var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");if(hex===PW_HASH){g.classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误，请重试";i.value="";i.focus()}}
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0,lbItems=[];
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=lbItems[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML='<b>'+s.name+'</b> &nbsp;·&nbsp; '+(cur+1)+'/'+lbItems.length+'<br><span style="font-size:14px;color:rgba(180,160,120,.5)">'+(s.info||"")+'</span>'}
+function prev(){cur=(cur-1+lbItems.length)%lbItems.length;updateLb()}
+function next(){cur=(cur+1)%lbItems.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",function(e){e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",function(e){e.stopPropagation();next()});
+lightbox.addEventListener("click",function(e){if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",function(e){if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+
+const sections=[
+{id:"sec-touxiang",title:"😶 头像表情",desc:"31 张 · 多角度、多表情面部参考",refs:[
+{name:"正面平视 1",file:"thumbs/头像_正面平视1.jpeg",orig:"originals/头像_正面平视1.jpeg"},
+{name:"正面平视 2",file:"thumbs/头像_正面平视2.jpeg",orig:"originals/头像_正面平视2.jpeg"},
+{name:"近景自然",file:"thumbs/头像_近景自然.jpeg",orig:"originals/头像_近景自然.jpeg"},
+{name:"标志性表情",file:"thumbs/头像_标志性表情.jpeg",orig:"originals/头像_标志性表情.jpeg"},
+{name:"自然微笑",file:"thumbs/头像_自然微笑.jpeg",orig:"originals/头像_自然微笑.jpeg"},
+{name:"忧郁眼神",file:"thumbs/头像_忧郁眼神.jpeg",orig:"originals/头像_忧郁眼神.jpeg"},
+{name:"俯视 1",file:"thumbs/头像_俯视1.jpeg",orig:"originals/头像_俯视1.jpeg"},
+{name:"俯视 2",file:"thumbs/头像_俯视2.jpeg",orig:"originals/头像_俯视2.jpeg"},
+{name:"仰视 1",file:"thumbs/头像_仰视1.jpeg",orig:"originals/头像_仰视1.jpeg"},
+{name:"仰视 2",file:"thumbs/头像_仰视2.jpeg",orig:"originals/头像_仰视2.jpeg"},
+{name:"左 45° 1",file:"thumbs/头像_左45°_1.jpeg",orig:"originals/头像_左45°_1.jpeg"},
+{name:"左 45° 2",file:"thumbs/头像_左45°_2.jpeg",orig:"originals/头像_左45°_2.jpeg"},
+{name:"左 45° 3",file:"thumbs/头像_左45°_3.jpeg",orig:"originals/头像_左45°_3.jpeg"},
+{name:"四分之三侧 1",file:"thumbs/头像_四分之三侧1.jpeg",orig:"originals/头像_四分之三侧1.jpeg"},
+{name:"四分之三侧 2",file:"thumbs/头像_四分之三侧2.jpeg",orig:"originals/头像_四分之三侧2.jpeg"},
+{name:"四分之三侧 3",file:"thumbs/头像_四分之三侧3.jpeg",orig:"originals/头像_四分之三侧3.jpeg"},
+{name:"侧脸 90° 1",file:"thumbs/头像_侧脸90°_1.jpeg",orig:"originals/头像_侧脸90°_1.jpeg"},
+{name:"侧脸 90° 2",file:"thumbs/头像_侧脸90°_2.jpeg",orig:"originals/头像_侧脸90°_2.jpeg"},
+{name:"侧脸 90° 3",file:"thumbs/头像_侧脸90°_3.jpeg",orig:"originals/头像_侧脸90°_3.jpeg"},
+{name:"侧脸 90° 4",file:"thumbs/头像_侧脸90°_4.jpeg",orig:"originals/头像_侧脸90°_4.jpeg"},
+{name:"侧脸 90° 5",file:"thumbs/头像_侧脸90°_5.jpeg",orig:"originals/头像_侧脸90°_5.jpeg"},
+{name:"侧脸 90° 6",file:"thumbs/头像_侧脸90°_6.jpeg",orig:"originals/头像_侧脸90°_6.jpeg"},
+{name:"侧脸 90° 7",file:"thumbs/头像_侧脸90°_7.jpeg",orig:"originals/头像_侧脸90°_7.jpeg"},
+{name:"惊讶",file:"thumbs/头像_惊讶.jpeg",orig:"originals/头像_惊讶.jpeg"},
+{name:"沉思",file:"thumbs/头像_沉思.jpeg",orig:"originals/头像_沉思.jpeg"},
+{name:"困惑怀疑",file:"thumbs/头像_困惑怀疑.jpeg",orig:"originals/头像_困惑怀疑.jpeg"},
+{name:"恐惧",file:"thumbs/头像_恐惧.jpeg",orig:"originals/头像_恐惧.jpeg"},
+{name:"犹豫",file:"thumbs/头像_犹豫.jpeg",orig:"originals/头像_犹豫.jpeg"},
+{name:"压抑愤怒",file:"thumbs/头像_压抑愤怒.jpeg",orig:"originals/头像_压抑愤怒.jpeg"},
+{name:"疲惫",file:"thumbs/头像_疲惫.jpeg",orig:"originals/头像_疲惫.jpeg"},
+{name:"释然",file:"thumbs/头像_释然.jpeg",orig:"originals/头像_释然.jpeg"}
+]},
+{id:"sec-quanshen",title:"🚶 全身动态",desc:"7 张 · 多角度全身姿态",refs:[
+{name:"正面站立",file:"thumbs/全身_正面站立.jpeg",orig:"originals/全身_正面站立.jpeg"},
+{name:"动态造型",file:"thumbs/全身_动态造型.jpeg",orig:"originals/全身_动态造型.jpeg"},
+{name:"背面 1",file:"thumbs/全身_背面1.jpeg",orig:"originals/全身_背面1.jpeg"},
+{name:"背面 2",file:"thumbs/全身_背面2.jpeg",orig:"originals/全身_背面2.jpeg"},
+{name:"行走姿态 1",file:"thumbs/全身_行走姿态1.jpeg",orig:"originals/全身_行走姿态1.jpeg"},
+{name:"行走姿态 2",file:"thumbs/全身_行走姿态2.jpeg",orig:"originals/全身_行走姿态2.jpeg"},
+{name:"全身参考图",file:"thumbs/全身_参考图.jpeg",orig:"originals/全身_参考图.jpeg"}
+]},
+{id:"sec-dingzhuang",title:"📐 定妆参考",desc:"3 张 · 标准三视图+造型定妆+服装细节",refs:[
+{name:"标准三视图",file:"thumbs/标准三视图.jpeg",orig:"originals/标准三视图.jpeg"},
+{name:"造型定妆_无头手",file:"thumbs/造型定妆_无头手.jpeg",orig:"originals/造型定妆_无头手.jpeg"},
+{name:"纯服装细节",file:"thumbs/纯服装细节.jpeg",orig:"originals/纯服装细节.jpeg"}
+]}
+];
+
+const nav=document.getElementById("sidebarNav");
+sections.forEach(function(sec){var a=document.createElement("a");a.href="#"+sec.id;a.innerHTML=sec.title+'<span class="nav-count">'+(sec.refs?sec.refs.length:"")+'</span>';nav.appendChild(a)});
+
+const root=document.getElementById("content-root");let li=0;
+sections.forEach(function(sec){
+var block=document.createElement("div");block.className="section-block";block.id=sec.id;
+var title=document.createElement("div");title.className="section-title";
+title.innerHTML='<div class="line"></div><h2>▎'+sec.title+'</h2><div class="line"></div>';
+block.appendChild(title);
+if(sec.desc){var d=document.createElement("div");d.className="section-desc";d.textContent=sec.desc;block.appendChild(d)}
+var g=document.createElement("div");g.className="gallery";
+if(sec.refs){sec.refs.forEach(function(ref){var idx=li++;var c=document.createElement("div");c.className="card ref-card";c.innerHTML='<div class="img-container"><img src="'+ref.file+'" alt="'+ref.name+'"></div><div class="label"><div class="scene-name">'+ref.name+'</div></div>';c.addEventListener("click",function(){openLightbox(idx)});g.appendChild(c);lbItems.push({file:ref.orig,name:"南建林 · "+ref.name,info:sec.title})})}
+block.appendChild(g);root.appendChild(block)
+});
+
+var navLinks=document.querySelectorAll(".sidebar-nav a");
+function updateActive(){var s=window.scrollY+120;var a=null;navLinks.forEach(function(l){var sec=document.getElementById(l.getAttribute("href").slice(1));if(sec&&sec.offsetTop<=s)a=l});if(a){navLinks.forEach(function(l){l.classList.remove("active")});a.classList.add("active")}}
+window.addEventListener("scroll",updateActive);updateActive();
+</script>
+</body>
+</html>

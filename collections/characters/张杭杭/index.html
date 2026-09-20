@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张杭杭 · 人物造型图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",serif;min-height:100vh}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .sub{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5);margin-bottom:10px}
+.hero .back{position:absolute;top:24px;left:28px;font-size:13px;color:rgba(180,150,120,.4);text-decoration:none;letter-spacing:.06em;transition:color .2s;z-index:10}
+.hero .back:hover{color:rgba(220,190,140,.7)}
+
+.bible-core{max-width:800px;margin:28px auto 0;padding:0 24px;text-align:center}
+.bible-definition{display:inline-block;font-size:17px;line-height:1.8;color:#d4c8a0;letter-spacing:.06em;padding:18px 28px;border:1px solid rgba(200,170,120,.3);border-radius:6px;background:rgba(200,170,120,.05);max-width:700px}
+.bible-definition em{font-style:normal;color:#e0d4b0}
+.bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
+.bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
+.bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin:16px 0 0}
+.bible-toggle:hover{
+.bible-copy{display:inline-block;font-size:12px;letter-spacing:.08em;color:rgba(160,140,110,.4);cursor:pointer;padding:6px 16px;border:1px solid rgba(180,150,100,.15);border-radius:4px;background:transparent;transition:all .25s;margin-left:10px;vertical-align:middle}
+.bible-copy:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-copy.copied{color:rgba(160,200,140,.7);border-color:rgba(160,200,140,.3)}
+color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-detail{display:none;max-width:900px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto}
+.bible-detail.active{display:block}
+.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
+.bible-detail h3:first-child{margin-top:0}
+.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
+.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75)}
+.bible-detail ul{padding-left:20px;margin:6px 0}
+.bible-detail li{margin:3px 0}
+.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.bible-detail th,.bible-detail td{padding:8px 12px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75)}
+.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05)}
+.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
+
+.section-title{display:flex;align-items:center;gap:14px;max-width:900px;margin:48px auto 18px;padding:0 24px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:28px;max-width:1200px;margin:0 auto;padding:0 24px 60px}
+
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:14px 18px}
+.card .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;transition:color .2s;z-index:1001;user-select:none}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px}
+
+.footer{
+.voice-section{max-width:900px;margin:0 auto 8px;padding:0 28px}
+.voice-section .voice-row{display:flex;gap:16px;flex-wrap:wrap}
+.voice-section audio{flex:1;min-width:280px;height:36px;border-radius:6px;background:#111524;filter:invert(.9) hue-rotate(180deg)}
+text-align:center;padding:40px 20px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+/* ── Password Gate ── */
+.pw-gate{position:fixed;inset:0;z-index:9999;background:#0d1020;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pw-gate.hidden{display:none}
+.pw-gate .pw-box{text-align:center;padding:48px 40px;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:12px;max-width:380px;width:90%}
+.pw-gate .pw-box h3{font-size:20px;font-weight:300;letter-spacing:.12em;color:#e0d4b8;margin-bottom:8px}
+.pw-gate .pw-box .pw-sub{font-size:13px;color:rgba(180,160,120,.4);letter-spacing:.06em;margin-bottom:28px}
+.pw-gate .pw-box input{width:100%;padding:12px 16px;font-size:16px;letter-spacing:.1em;background:#0a0d16;border:1px solid rgba(140,120,80,.25);border-radius:6px;color:#e0d4b8;text-align:center;outline:none;transition:border-color .25s}
+.pw-gate .pw-box input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate .pw-box input::placeholder{color:rgba(150,130,100,.3)}
+.pw-gate .pw-box button{margin-top:16px;width:100%;padding:12px;font-size:16px;letter-spacing:.1em;color:#0a0a14;background:rgba(200,170,120,.7);border:none;border-radius:6px;cursor:pointer;transition:background .25s}
+.pw-gate .pw-box button:hover{background:rgba(220,190,140,.85)}
+.pw-gate .pw-err{margin-top:14px;font-size:13px;color:rgba(200,100,80,.7);letter-spacing:.05em;min-height:18px}
+
+@media(max-width:700px){.gallery{grid-template-columns:1fr}.hero{padding:40px 16px 30px}}
+</style>
+</head>
+<body>
+
+<div class="pw-gate" id="pwGate">
+<div class="pw-box">
+<h3>🔒 受限访问</h3>
+<div class="pw-sub">请输入密码以继续</div>
+<input type="password" id="pwInput" placeholder="······" onkeydown="if(event.key==='Enter')checkPw()">
+<button onclick="checkPw()">进 入</button>
+<div class="pw-err" id="pwErr"></div>
+</div>
+</div>
+
+<header class="hero">
+<a class="back" href="../index.html">← 返回角色选择</a>
+<p class="sub">失控游戏 · EP01</p>
+<h1>张 杭 杭</h1>
+<div class="bible-core">
+<div class="bible-definition"><em>张杭杭</em> —— 23岁，生活方式博主，邹青前女友。<br>奶油粉短夹克 + 象牙白针织内搭 + 高扎黑马尾。<br>习惯把生活整理成可控版本，直到进入<em>「无法整理的世界」</em>。</div>
+<div class="bible-tones">
+<span class="bible-tone">23岁</span><span class="bible-tone">奶油粉</span><span class="bible-tone">高马尾</span><span class="bible-tone">博主</span><span class="bible-tone">记录者</span>
+</div>
+<button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整造型圣经</button><button class="bible-copy" id="bibleCopy" onclick="copyBible()">📋 复制圣经</button>
+<div class="bible-detail" id="bibleDetail">
+<h3>角色定位</h3>
+<p>张杭杭，23岁，生活方式美妆博主，邹青前女友。功能：观察者、记录者、信息读取者。核心冲突：整理世界的人，进入一个无法整理的世界。</p>
+<h3>核心视觉命题</h3>
+<blockquote>一个2026年的城市生活方式女孩，外表干净精致，习惯记录生活细节，但进入失控空间后逐渐失去"体面外壳"。</blockquote>
+<h3>脸部与发型</h3>
+<ul><li>清秀、安静、有观察力，避免网红脸/明星化</li><li>黑色中长发，高位自然扎发，发丝略松</li><li>S0→S3：扎发完整 → 碎发增加 → 发尾散开汗湿 → 半散发混乱</li></ul>
+<h3>基础定妆（A3 精致博主版）</h3>
+<table>
+<tr><th>部位</th><th>描述</th></tr>
+<tr><td>外套</td><td>奶油粉短款轻夹克 — 翻领、双胸袋、金属按扣、柔软微宽松</td></tr>
+<tr><td>内搭</td><td>象牙白无袖针织背心 — 罗纹针织、贴身不性感</td></tr>
+<tr><td>下装</td><td>奶油白高腰直筒裤 — 干净宽松，禁止紧身/工装裤</td></tr>
+<tr><td>鞋</td><td>奶油白复古运动鞋 — 日常耐穿，禁止潮鞋</td></tr>
+</table>
+<h3>随身物资产</h3>
+<ul><li>奶油色小斜挎包（补妆纸、镜子、创可贴、湿巾）</li><li>手机稳定器（记录世界，非专业摄影师）</li><li>黑色发圈（腕上 → 紧张时取下 → 后期绑东西）</li><li>小银色耳环（低调识别）</li></ul>
+<h3>颜色系统</h3>
+<table>
+<tr><th>主色</th><td>奶油粉 — 温柔、生活感、表面稳定</td></tr>
+<tr><th>辅色</th><td>象牙白 — 干净、整理、理想状态</td></tr>
+<tr><th>变化</th><td>不是换装，而是污染：粉变灰 → 灰尘污迹水渍 → 颜色仍在（她没有失去自己）</td></tr>
+</table>
+<h3>进入星星岛前后</h3>
+<table>
+<tr><th>阶段</th><th>变化</th></tr>
+<tr><td>BEFORE</td><td>衣服干净、发型完整、包整理好、颜色明亮 — 观察别人</td></tr>
+<tr><td>外套</td><td>完整 → 打开 → 脱下 → 绑腰</td></tr>
+<tr><td>发型</td><td>完整 → 松散 → 湿乱</td></tr>
+<tr><td>衣服</td><td>干净 → 灰尘 → 污渍 → 磨损</td></tr>
+<tr><td>行为</td><td>记录别人 → 帮助别人 → 保护别人</td></tr>
+</table>
+<h3>剪影识别</h3>
+<blockquote>高扎黑色马尾 + 短款粉色外套 + 粉白色系统 + 记录动作</blockquote>
+<h3>人物核心变化</h3>
+<blockquote>一个一直试图整理世界的女孩，最终接受世界本来就是混乱的。从「我要把一切整理好」变成「即使混乱，我也可以继续前进」。</blockquote>
+</div>
+</div>
+</header>
+
+<div 
+<div class="voice-section">
+<div class="voice-row">
+<audio controls src="张杭杭-我也不知道怎么把一个真愿望变快乐.mp3"></audio>
+<audio controls src="张杭杭-我拒绝校准.mp3"></audio>
+</div></div>
+<div class="section-title"><div class="line"></div><h2>▎📸 造型参考</h2><div class="line"></div></div>
+<div class="gallery" id="gallery"></div>
+
+<div class="lightbox" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><span class="lb-nav lb-prev" id="lbPrev">&#8249;</span><img src="" alt="" id="lbImg"><div class="lb-info" id="lbInfo"></div><span class="lb-nav lb-next" id="lbNext">&#8250;</span></div>
+<div class="footer">失 控 游 戏 · 张 杭 杭</div>
+
+<script>
+(function(){if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden");return}})();
+const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+async function checkPw(){var i=document.getElementById("pwInput"),e=document.getElementById("pwErr"),g=document.getElementById("pwGate");if(!i.value){e.textContent="请输入密码";return}var h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(i.value));var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");if(hex===PW_HASH){g.classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误，请重试";i.value="";i.focus()}}
+
+
+function copyBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleCopy");var t=d.innerText;navigator.clipboard.writeText(t).then(function(){b.textContent="✓ 已复制";b.classList.add("copied");setTimeout(function(){b.textContent="📋 复制圣经";b.classList.remove("copied")},2000)})}
+
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整造型圣经"}else{d.classList.add("active");b.innerHTML="▾ 收起造型圣经";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+
+const items=[
+{name:"头部多视角参考图",thumb:"thumbs/头部多视角参考图.png",orig:"originals/头部多视角参考图.png"},
+{name:"正面肖像",thumb:"thumbs/正面肖像.jpeg",orig:"originals/正面肖像.jpeg"},
+{name:"近景特写",thumb:"thumbs/近景特写.png",orig:"originals/近景特写.png"},
+{name:"全身正面站立",thumb:"thumbs/全身正面站立.png",orig:"originals/全身正面站立.png"},
+{name:"全身 背面",thumb:"thumbs/全身_背面.png",orig:"originals/全身_背面.png"},
+{name:"全身 侧面",thumb:"thumbs/全身_侧面.png",orig:"originals/全身_侧面.png"},
+{name:"全身 多角度",thumb:"thumbs/全身_多角度.jpeg",orig:"originals/全身_多角度.jpeg"},
+{name:"干净vs污损对比",thumb:"thumbs/干净vs污损对比.png",orig:"originals/干净vs污损对比.png"},
+{name:"服装材质拼图",thumb:"thumbs/服装材质拼图.png",orig:"originals/服装材质拼图.png"},
+{name:"随身物品组图",thumb:"thumbs/随身物品组图.png",orig:"originals/随身物品组图.png"},
+{name:"正面正视",thumb:"thumbs/正面正视.png",orig:"originals/正面正视.png"},
+{name:"左侧正侧",thumb:"thumbs/左侧正侧.png",orig:"originals/左侧正侧.png"},
+{name:"右侧正侧",thumb:"thumbs/右侧正侧.png",orig:"originals/右侧正侧.png"},
+{name:"左侧45度",thumb:"thumbs/左侧45度.png",orig:"originals/左侧45度.png"},
+{name:"右侧45度",thumb:"thumbs/右侧45度.png",orig:"originals/右侧45度.png"},
+{name:"仰视角度",thumb:"thumbs/仰视角度.png",orig:"originals/仰视角度.png"},
+{name:"俯视角度",thumb:"thumbs/俯视角度.png",orig:"originals/俯视角度.png"},
+{name:"默认状态",thumb:"thumbs/默认状态.png",orig:"originals/默认状态.png"},
+{name:"角色招牌",thumb:"thumbs/角色招牌.png",orig:"originals/角色招牌.png"},
+{name:"轻微微笑",thumb:"thumbs/轻微微笑.png",orig:"originals/轻微微笑.png"},
+{name:"思考",thumb:"thumbs/思考.png",orig:"originals/思考.png"},
+{name:"疑惑",thumb:"thumbs/疑惑.png",orig:"originals/疑惑.png"},
+{name:"惊讶",thumb:"thumbs/惊讶.png",orig:"originals/惊讶.png"},
+{name:"恐惧",thumb:"thumbs/恐惧.png",orig:"originals/恐惧.png"},
+{name:"悲伤",thumb:"thumbs/悲伤.png",orig:"originals/悲伤.png"},
+{name:"愤怒",thumb:"thumbs/愤怒.png",orig:"originals/愤怒.png"},
+{name:"犹豫",thumb:"thumbs/犹豫.png",orig:"originals/犹豫.png"},
+{name:"压力状态",thumb:"thumbs/压力状态.png",orig:"originals/压力状态.png"},
+{name:"释然",thumb:"thumbs/释然.png",orig:"originals/释然.png"},
+{name:"定妆_正面全身",thumb:"thumbs/定妆_正面全身.png",orig:"originals/定妆_正面全身.png"},
+{name:"定妆_背面全身",thumb:"thumbs/定妆_背面全身.png",orig:"originals/定妆_背面全身.png"},
+{name:"定妆_侧面全身",thumb:"thumbs/定妆_侧面全身.png",orig:"originals/定妆_侧面全身.png"},
+{name:"定妆_动态站姿",thumb:"thumbs/定妆_动态站姿.png",orig:"originals/定妆_动态站姿.png"},
+{name:"定妆_特写细节",thumb:"thumbs/定妆_特写细节.png",orig:"originals/定妆_特写细节.png"},
+{name:"有配件_正面全身",thumb:"thumbs/有配件_正面全身.png",orig:"originals/有配件_正面全身.png"},
+{name:"有配件_背面全身",thumb:"thumbs/有配件_背面全身.png",orig:"originals/有配件_背面全身.png"},
+{name:"有配件_侧面全身",thumb:"thumbs/有配件_侧面全身.png",orig:"originals/有配件_侧面全身.png"},
+{name:"有配件_动态站姿",thumb:"thumbs/有配件_动态站姿.png",orig:"originals/有配件_动态站姿.png"},
+{name:"有配件_特写细节",thumb:"thumbs/有配件_特写细节.png",orig:"originals/有配件_特写细节.png"},
+{name:"剪影识别系统",thumb:"thumbs/剪影识别系统.png",orig:"originals/剪影识别系统.png"},
+{name:"服装结构与材质板",thumb:"thumbs/服装结构与材质板.png",orig:"originals/服装结构与材质板.png"},
+{name:"脸部_眼镜_发型细节",thumb:"thumbs/脸部_眼镜_发型细节.png",orig:"originals/脸部_眼镜_发型细节.png"},
+{name:"随身物资产",thumb:"thumbs/随身物资产.png",orig:"originals/随身物资产.png"},
+{name:"标准三视图",thumb:"thumbs/标准三视图.jpeg",orig:"originals/标准三视图.jpeg"},
+{name:"造型定妆_无头手",thumb:"thumbs/造型定妆_无头手.jpeg",orig:"originals/造型定妆_无头手.jpeg"},
+{name:"纯服装细节",thumb:"thumbs/纯服装细节.jpeg",orig:"originals/纯服装细节.jpeg"},
+];
+
+const g=document.getElementById("gallery"),lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLb(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLb(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=items[cur];lbImg.src=s.orig;lbImg.alt=s.name;lbInfo.innerHTML='<b>'+s.name+'</b> &nbsp;·&nbsp; '+(cur+1)+'/'+items.length}
+function prev(){cur=(cur-1+items.length)%items.length;updateLb()}
+function next(){cur=(cur+1)%items.length;updateLb()}
+
+items.forEach(function(it,i){
+var c=document.createElement("div");c.className="card";
+c.innerHTML='<div class="img-container"><img src="'+it.thumb+'" alt="'+it.name+'"></div><div class="label"><div class="scene-name">'+it.name+'</div></div>';
+c.addEventListener("click",function(){openLb(i)});
+g.appendChild(c)
+});
+
+document.getElementById("lbClose").addEventListener("click",closeLb);
+document.getElementById("lbPrev").addEventListener("click",function(e){e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",function(e){e.stopPropagation();next()});
+lightbox.addEventListener("click",function(e){if(e.target===lightbox)closeLb()});
+document.addEventListener("keydown",function(e){if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+</script>
+</body>
+</html>
