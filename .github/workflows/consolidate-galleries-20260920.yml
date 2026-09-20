@@ -1,0 +1,53 @@
+name: Consolidate approved project galleries 20260920
+on:
+  push:
+    branches: [integration/project-galleries-20260920]
+    paths: [.github/workflows/consolidate-galleries-20260920.yml]
+permissions:
+  contents: write
+concurrency:
+  group: consolidate-galleries-20260920
+  cancel-in-progress: false
+jobs:
+  consolidate:
+    if: github.repository == 'foxmuldery/shikong-scenes'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GIT_TERMINAL_PROMPT: '0'
+    steps:
+      - name: Fetch isolated integration branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init work
+          cd work
+          git remote add origin "https://github.com/${GITHUB_REPOSITORY}.git"
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c http.extraheader="AUTHORIZATION: basic $AUTH" fetch --no-tags origin "$GITHUB_SHA"
+          git checkout -b "$GITHUB_REF_NAME" FETCH_HEAD
+          git config user.name 'Project gallery consolidation'
+          git config user.email '129568211+foxmuldery@users.noreply.github.com'
+      - name: Run immutable reviewed importer with approved group allowlist
+        working-directory: work
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import urllib.request,textwrap
+          url='https://raw.githubusercontent.com/foxmuldery/mengxunsi-reference/3c58497a6075fd3c5e893de8d7cbe35977d0b6ec/.github/workflows/consolidate-galleries-20260920.yml'
+          with urllib.request.urlopen(url,timeout=60) as response:
+              source=response.read(100000).decode('utf-8')
+          marker="          python3 - <<'PY'\n"
+          if source.count(marker)!=1: raise SystemExit('Unexpected importer layout')
+          code=source.split(marker,1)[1].split('\n          PY\n',1)[0]
+          exec(compile(textwrap.dedent(code),'reviewed-importer-3c58497','exec'))
+          PY
+      - name: Publish integration branch only; reject non-fast-forward
+        working-directory: work
+        shell: bash
+        run: |
+          set -euo pipefail
+          AUTH=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+          git -c http.extraheader="AUTHORIZATION: basic $AUTH" push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"

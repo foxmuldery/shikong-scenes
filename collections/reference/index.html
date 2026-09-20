@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>失控游戏 · 视觉参考</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",serif}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:#0a0a14}::-webkit-scrollbar-thumb{background:rgba(180,160,120,.25)}
+.pw-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0a14;z-index:99999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pw-overlay.hidden{display:none}
+.pw-box{text-align:center;padding:60px 40px;border:1px solid rgba(180,160,120,.1);border-radius:8px;background:rgba(255,255,255,.01);max-width:400px}
+.pw-box h2{font-size:28px;color:#e0d4b8;letter-spacing:.15em;margin-bottom:24px;font-weight:400}
+.pw-box input{width:100%;padding:12px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(180,160,120,.2);border-radius:4px;color:#ede4d4;font-size:16px;text-align:center;font-family:inherit;outline:none}
+.sidebar{position:fixed;top:0;left:0;width:180px;height:100vh;background:linear-gradient(180deg,#0d0d1f 0%,#0a0a14 100%);border-right:1px solid rgba(180,160,120,.08);z-index:100;overflow-y:auto;padding-bottom:40px}
+.sidebar-logo{padding:28px 16px 20px;text-align:center}
+.sidebar-logo .title{font-size:14px;font-weight:700;color:#e0d4b8;letter-spacing:.12em}
+.sidebar-nav{padding:0 12px}
+.sidebar-nav a{display:block;padding:6px 12px;font-size:12px;color:rgba(200,180,150,.5);text-decoration:none;border-radius:4px;transition:all .2s}
+.sidebar-nav a:hover,.sidebar-nav a.active{color:#e0d4b8;background:rgba(200,160,80,.08)}
+.sidebar-nav .nav-major{font-size:10px;color:rgba(180,160,120,.35);letter-spacing:.15em;padding:16px 12px 4px;border-top:1px solid rgba(180,160,120,.06);margin-top:4px}
+.main{margin-left:180px;min-height:100vh}
+.hero{padding:50px 0 30px;text-align:center}
+.hero h1{font-size:40px;font-weight:700;color:#e0d4b8;letter-spacing:.2em;text-shadow:0 0 50px rgba(200,160,80,.18)}
+.cat-divider{max-width:1200px;margin:40px auto 12px;padding:0 24px;display:flex;align-items:center;gap:14px}
+.cat-divider .line{flex:1;height:1px;background:rgba(180,160,120,.06)}
+.cat-divider .cat-label{font-size:12px;letter-spacing:.2em;color:rgba(180,160,120,.3)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:16px;max-width:1200px;margin:0 auto 30px;padding:0 24px}
+.card{background:#111524;border:1px solid rgba(180,160,120,.06);border-radius:4px;overflow:hidden;cursor:pointer;transition:all .2s}
+.card:hover{border-color:rgba(200,160,80,.15);transform:translateY(-2px)}
+.card img{width:100%;display:block;object-fit:cover}
+.card-info{padding:8px 14px 12px}.card-name{font-size:12px;color:#d4c8a8}
+.lightbox-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.94);z-index:9999;align-items:center;justify-content:center}
+.lightbox-overlay.active{display:flex}
+.lightbox-overlay img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lightbox-close{position:fixed;top:20px;right:30px;font-size:30px;color:rgba(200,180,150,.5);cursor:pointer;z-index:10000}
+.lightbox-nav{position:fixed;top:50%;font-size:36px;color:rgba(200,180,150,.3);cursor:pointer;z-index:10000;user-select:none}
+.lightbox-nav.prev{left:24px}.lightbox-nav.next{right:24px}
+.footer{text-align:center;padding:40px 24px 60px;color:rgba(180,160,120,.25);font-size:11px}
+</style></head><body>
+<div class="pw-overlay" id="pwOverlay"><div class="pw-box"><h2>失 控 游 戏</h2><input type="password" id="pwInput" placeholder="请输入访问密码" autofocus onkeydown="if(event.key==='Enter')checkPassword()"><div class="pw-error" id="pwError" style="color:rgba(220,140,120,.6);font-size:12px;margin-top:12px;display:none">密码错误，请重试</div></div></div>
+<nav class="sidebar" id="sidebar"><div class="sidebar-logo"><div class="title">视觉参考</div></div><div class="sidebar-nav" id="sidebarNav"></div></nav>
+<div class="main" id="top"><div class="hero"><h1>失 控 游 戏</h1></div><div id="content-root"></div><div class="footer">失控游戏 · 视觉参考 · 3组共88张</div></div>
+<div class="lightbox-overlay" id="lightbox" onclick="this.classList.remove('active')"><span class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span><span class="lightbox-nav prev" onclick="navLightbox(-1)">‹</span><span class="lightbox-nav next" onclick="navLightbox(1)">›</span><img id="lightboxImg" src=""></div>
+<script>
+(function(){var HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";if(sessionStorage.getItem("_pw_ok")===HASH){document.getElementById("pwOverlay").classList.add("hidden");return}async function sha256(m){var e=new TextEncoder().encode(m);var d=await crypto.subtle.digest("SHA-256",e);return Array.from(new Uint8Array(d)).map(function(b){return b.toString(16).padStart(2,"0")}).join("")}window.checkPassword=function(){var v=document.getElementById("pwInput").value;sha256(v).then(function(h){if(h===HASH){sessionStorage.setItem("_pw_ok",HASH);document.getElementById("pwOverlay").classList.add("hidden")}else{document.getElementById("pwError").style.display="block";document.getElementById("pwInput").value=""}})};})();
+var cats=[{id:"sleep",name:"🛏️ Doctor Sleep 睡梦医生",sec:"sec-sleep"},{id:"matrix",name:"💊 Matrix Resurrections 黑客帝国4",sec:"sec-matrix"},{id:"pulse",name:"📡 Pulse 回路",sec:"sec-pulse"}];
+var items=[];
+for(var i=1;i<=37;i++)items.push({file:i+" - Doctor Sleep.jpg",name:"#"+i+" · Doctor Sleep",cat:"sleep"});
+for(var i=38;i<=67;i++)items.push({file:i+" - The Matrix Resurrections.jpg",name:"#"+i+" · Matrix Resurrections",cat:"matrix"});
+for(var i=68;i<=88;i++)items.push({file:i+" - Pulse.jpg",name:"#"+i+" · Pulse",cat:"pulse"});
+var root=document.getElementById("content-root"),nav=document.getElementById("sidebarNav");
+nav.innerHTML='<a href="#top">▸ 页面顶部</a>';
+cats.forEach(function(c){nav.innerHTML+='<div class="nav-major">'+c.name.split(' ')[0]+'</div><a href="#'+c.sec+'">'+c.name+'</a>';root.insertAdjacentHTML("beforeend",'<div class="cat-divider" id="'+c.sec+'"><div class="line"></div><span class="cat-label">'+c.name+'</span><div class="line"></div></div><div class="card-grid" id="grid-'+c.id+'"></div>');});
+items.forEach(function(it){var g=document.getElementById("grid-"+it.cat);if(!g)return;g.insertAdjacentHTML("beforeend",'<div class="card" onclick="openLightbox(this.querySelector(\'img\'),\''+it.cat+'\')"><img src="'+it.file+'" alt="'+it.name+'" loading="lazy"><div class="card-info"><div class="card-name">'+it.name+'</div></div></div>');});
+var ci=[],cix=0;
+function openLightbox(img,gid){var g=document.getElementById("grid-"+gid);if(!g)return;ci=Array.from(g.querySelectorAll("img")).map(function(i){return i.src});cix=ci.indexOf(img.src);if(cix<0)cix=0;document.getElementById("lightboxImg").src=ci[cix];document.getElementById("lightbox").classList.add("active")}
+function navLightbox(d){cix=(cix+d+ci.length)%ci.length;document.getElementById("lightboxImg").src=ci[cix]}
+document.addEventListener("keydown",function(e){if(!document.getElementById("lightbox").classList.contains("active"))return;if(e.key==="Escape")document.getElementById("lightbox").classList.remove("active");if(e.key==="ArrowLeft")navLightbox(-1);if(e.key==="ArrowRight")navLightbox(1)});
+</script></body></html>

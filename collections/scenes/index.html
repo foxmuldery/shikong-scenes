@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控游戏 · EP01《星星岛内测》场景图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC","STSong","Songti SC",serif;min-height:100vh;overflow-x:hidden}
+
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 15% 80%,rgba(255,255,255,.4),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .ep-title{position:relative;font-size:18px;letter-spacing:.3em;color:rgba(200,180,140,.55);margin-bottom:6px}
+.hero .subtitle{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5)}
+
+.bible-core{max-width:1100px;margin:32px auto 0;padding:0 24px;text-align:center}
+.bible-definition{display:inline-block;font-size:17px;line-height:1.8;color:#d4c8a0;letter-spacing:.06em;padding:18px 28px;border:1px solid rgba(200,170,120,.3);border-radius:6px;background:rgba(200,170,120,.05);margin-bottom:24px;max-width:800px}
+.bible-definition em{font-style:normal;color:#e0d4b0}
+.bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:20px}
+.bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
+.bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-bottom:8px}
+.bible-toggle:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-copy{display:none;font-size:13px;letter-spacing:.08em;color:rgba(180,150,100,.5);cursor:pointer;padding:6px 18px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin-left:10px;vertical-align:middle}
+.bible-copy.show{display:inline-block}
+.bible-copy:hover{color:rgba(220,190,130,.85);border-color:rgba(180,150,100,.5);background:rgba(180,150,100,.08)}
+.bible-copy.copied{color:#6ec9a8;border-color:rgba(110,201,168,.4);background:rgba(110,201,168,.08)}
+
+.bible-detail{display:none;max-width:1100px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.bible-detail.active{display:block}
+.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
+.bible-detail h3:first-child{margin-top:0}
+.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
+.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75);letter-spacing:.03em}
+.bible-detail ul{padding-left:20px;margin:6px 0}
+.bible-detail li{margin:3px 0}
+.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.bible-detail th,.bible-detail td{padding:8px 12px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75)}
+.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05)}
+.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
+.bible-detail pre{background:rgba(10,12,20,.6);padding:14px;border-radius:4px;font-size:13px;line-height:1.6;color:rgba(215,200,170,.65);overflow-x:auto;margin:10px 0}
+
+/* ── Anchor badge ── */
+.anchor-badge{display:inline-block;font-size:10px;letter-spacing:.1em;padding:2px 8px;border-radius:3px;margin-left:8px;vertical-align:middle;position:relative;top:-1px}
+.anchor-A01{color:#c9a96e;border:1px solid rgba(201,169,110,.25);background:rgba(201,169,110,.06)}
+.anchor-A02{color:#6ea8c9;border:1px solid rgba(110,168,201,.25);background:rgba(110,168,201,.06)}
+.anchor-A04{color:#c9b86e;border:1px solid rgba(201,184,110,.25);background:rgba(201,184,110,.06)}
+.anchor-A05{color:#9e6ec9;border:1px solid rgba(158,110,201,.25);background:rgba(158,110,201,.06)}
+.anchor-A06{color:#6ec9a8;border:1px solid rgba(110,201,168,.25);background:rgba(110,201,168,.06)}
+.anchor-A03{color:#c96e6e;border:1px solid rgba(201,110,110,.25);background:rgba(201,110,110,.06)}
+.anchor-A07{color:#c6a86e;border:1px solid rgba(198,168,110,.25);background:rgba(198,168,110,.06)}
+.anchor-A08{color:#8ea8c9;border:1px solid rgba(142,168,201,.25);background:rgba(142,168,201,.06)}
+.anchor-A09{color:#a0c0d0;border:1px solid rgba(160,192,208,.25);background:rgba(160,192,208,.06)}
+.anchor-bible{color:#c96e6e;border:1px solid rgba(201,110,110,.25);background:rgba(201,110,110,.06)}
+
+.section-block{max-width:1400px;margin:0 auto;padding:0 24px}
+.section-title{display:flex;align-items:center;gap:14px;margin:52px 0 24px}
+.section-title:first-of-type{margin-top:36px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:32px;align-items:start;padding-bottom:8px}
+
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card.wide-card{grid-column:1/-1;max-width:1100px;justify-self:center}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(180deg,rgba(17,21,36,0) 0%,#111524 100%)}
+.card .label .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em;text-align:right;line-height:1.4}
+.card .label .scene-script{font-size:13px;color:rgba(210,190,160,.55);letter-spacing:.03em;line-height:1.6}
+
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;user-select:none;padding:20px;transition:color .2s;z-index:1001}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px;line-height:1.7}
+
+.footer{text-align:center;padding:50px 20px 50px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+
+/* ── Sidebar ── */
+#sidebar{position:fixed;left:0;top:0;width:190px;height:100vh;background:rgba(6,8,16,.96);border-right:1px solid rgba(180,160,120,.1);z-index:100;overflow-y:auto;padding:28px 0 24px 0;display:flex;flex-direction:column;gap:2px}
+#sidebar .nav-label{font-size:11px;letter-spacing:.18em;color:rgba(170,150,110,.35);padding:16px 0 6px 20px;text-transform:uppercase;white-space:nowrap;border-top:1px solid rgba(180,160,120,.08);margin-top:8px}
+#sidebar .nav-label:first-child{border-top:none;margin-top:0;padding-top:0}
+#sidebar a{display:block;font-size:14px;letter-spacing:.06em;color:rgba(205,185,155,.55);text-decoration:none;padding:6px 12px 6px 20px;border-left:2px solid transparent;transition:all .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sidebar a:hover{color:rgba(225,205,165,.85);background:rgba(180,150,100,.05);border-left-color:rgba(180,150,100,.3)}
+#sidebar a.active{color:#d4c8a0;border-left-color:rgba(200,170,120,.6);background:rgba(180,150,100,.08)}
+#sidebar a.sub{font-size:12px;padding:4px 12px 4px 34px;color:rgba(170,150,120,.4);border-left-color:transparent}
+#sidebar a.sub:hover{color:rgba(200,175,140,.65)}
+#sidebar a.sub.active{color:rgba(200,175,140,.6);background:rgba(180,150,100,.04)}
+
+body.with-sidebar{padding-left:190px}
+@media(max-width:860px){#sidebar{display:none}body.with-sidebar{padding-left:0}}
+
+@media(max-width:480px){.gallery{grid-template-columns:1fr;gap:20px}.hero{padding:40px 16px 30px}.card.wide-card{max-width:100%}.bible-definition{font-size:15px;padding:14px 18px}.bible-detail{padding:20px 16px}}
+
+/* ── Password Gate ── */
+.pw-gate{position:fixed;inset:0;z-index:9999;background:rgba(5,5,14,.97);display:flex;justify-content:center;align-items:center;flex-direction:column;gap:18px}
+.pw-gate.hidden{display:none}
+.pw-gate h2{font-size:22px;font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 30px rgba(200,170,120,.25)}
+.pw-gate input{width:260px;padding:12px 16px;font-size:15px;letter-spacing:.1em;background:#111524;border:1px solid rgba(180,160,120,.25);border-radius:4px;color:#ede4d4;text-align:center;outline:none;transition:border-color .25s}
+.pw-gate input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate button{padding:10px 40px;font-size:15px;letter-spacing:.12em;color:#111524;background:rgba(200,170,120,.75);border:none;border-radius:4px;cursor:pointer;transition:all .25s}
+.pw-gate button:hover{background:rgba(220,190,140,.9)}
+.pw-gate .pw-err{font-size:13px;color:#c96e6e;letter-spacing:.05em;min-height:18px}
+</style>
+</head>
+<body>
+
+<div class="pw-gate" id="pwGate">
+<h2>失控游戏</h2>
+<input type="password" id="pwInput" placeholder="请输入访问密码" onkeydown="if(event.key==='Enter')checkPw()">
+<button onclick="checkPw()">进 入</button>
+<div class="pw-err" id="pwErr"></div>
+</div>
+
+<header class="hero">
+<p class="ep-title">失控游戏 · EP01</p>
+<h1>星 星 岛 内 测</h1>
+<p class="subtitle">旧商场外景 + 小火车场景 · 场景锚点图集 · 三十七景</p>
+</header>
+
+<div class="bible-core">
+<div class="bible-definition"><em>星星岛儿童乐园</em>不是普通的废弃商场，<br>而是<em>「千禧年县城边缘的衰败童年遗迹」</em>——被烂尾楼包围、被时间遗忘。</div>
+<div class="bible-tones">
+<span class="bible-tone">衰败</span><span class="bible-tone">潮湿</span><span class="bible-tone">烂尾楼</span><span class="bible-tone">千禧年</span>
+</div>
+<button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整场景设定</button>
+<button class="bible-copy" id="bibleCopy" onclick="copyBible()" title="复制圣经全文">📋 一键复制</button>
+<div class="bible-detail" id="bibleDetail">
+
+<h3>场景设定</h3>
+<p>2000年前后中国南方内陆县城边缘的旧商业综合体，曾经经营过大型批发与零售，后因城市发展失去活力逐渐衰败，周边建筑工地与烂尾楼林立，整体氛围真实、灰暗、潮湿。</p>
+
+<h3>建筑特征</h3>
+<ul>
+<li>对称三层结构，中央半圆柱蓝色玻璃幕墙塔楼</li>
+<li>米白/浅灰外墙瓷砖，水渍与污痕遍布</li>
+<li>金色"星星岛儿童乐园"招牌，已褪色斑驳</li>
+<li>地面层：暗色玻璃入口门 + 两侧金属卷帘门</li>
+<li>宽阔混凝土前广场，裂缝生草，积水反光</li>
+</ul>
+
+<h3>环境氛围</h3>
+<table>
+<tr><th>元素</th><th>描述</th></tr>
+<tr><td>天色</td><td>厚云阴天，漫射无影光</td></tr>
+<tr><td>地面</td><td>积水反光，停车线褪色，杂草破缝而出</td></tr>
+<tr><td>周边</td><td>烂尾楼混凝土骨架环绕，塔吊静止</td></tr>
+<tr><td>围墙</td><td>蓝色波纹铁皮围挡</td></tr>
+<tr><td>色调</td><td>去饱和灰、湿水泥褐、脏米白、褪青蓝</td></tr>
+</table>
+
+<h3>九大锚点体系 (A01–A09)</h3>
+<table>
+<tr><th>编号</th><th>名称</th><th>内容</th></tr>
+<tr><td>A01</td><td>外景主母版</td><td>正面全景建立镜头，完整建筑与广场</td></tr>
+<tr><td>A02</td><td>入口方向锚点</td><td>从停车区看向主入口</td></tr>
+<tr><td>A03</td><td>侧面商业体块</td><td>右侧立面，卷帘门/窗户/屋顶</td></tr>
+<tr><td>A04</td><td>后勤侧后方</td><td>装货平台、员工通道、通风管道</td></tr>
+<tr><td>A05</td><td>高位空间关系</td><td>俯瞰全景：商场→广场→道路→烂尾楼群</td></tr>
+<tr><td>A06</td><td>入口细节</td><td>招牌、门框锈蚀、玻璃污渍近景</td></tr>
+<tr><td>A07</td><td>材质参考</td><td>瓷砖/玻璃幕墙/锈铁/卷帘门/水泥地/灯箱</td></tr>
+<tr><td>A08</td><td>状态氛围</td><td>强调暗、湿、空、静的阴郁氛围</td></tr>
+<tr><td>A09</td><td>人物体度</td><td>四人背影立于入口前，提供真实比例</td></tr>
+</table>
+
+<h3>关键词</h3>
+<blockquote>旧商场 / 儿童乐园 / 衰败 / 边缘地带 / 工地 / 烂尾楼 / 空旷 / 潮湿 / 2000年前后</blockquote>
+
+<h3>S1 小火车场景 · 空间硬事实</h3>
+<ul>
+<li>小火车固定在左侧前景：暗砖红车壳+土黄裙板+泛黄圆脸+凹陷圆眼孔</li>
+<li>圆形黑洞假山隧道居中，粗糙灰黑玻璃钢包裹</li>
+<li>右侧：红锈旧铁栏杆折返通道+发黄白瓷砖立柱+黑色塑料帘</li>
+<li>洞口上方绿色安全出口灯；右中景小红指示灯</li>
+<li>地面：深灰湿冷水磨石/粗骨料，窄轨轨枕清晰</li>
+<li>最右墙：原创褪色卡通贴纸，脸部均为黑色圆洞</li>
+</ul>
+
+<h3>绝对禁忌</h3>
+<ul>
+<li>❌ 现代玻璃幕墙写字楼风格</li>
+<li>❌ 活跃商业氛围（灯光/人群/新车）</li>
+<li>❌ 晴天强光/蓝天白云</li>
+<li>❌ 欧美鬼屋、哥特城堡、赛博朋克、蓝紫霓虹</li>
+<li>❌ 怪兽尖牙利爪、血腥、黏液、真实尸体</li>
+<li>❌ 现成动漫IP、清晰文字、品牌Logo</li>
+</ul>
+
+</div>
+</div>
+
+<div id="content-root"></div>
+
+<nav id="sidebar"></nav>
+
+<div class="lightbox" id="lightbox">
+<span class="lb-close" id="lbClose">&times;</span>
+<span class="lb-nav lb-prev" id="lbPrev">&#8249;</span>
+<img src="" alt="" id="lbImg">
+<div class="lb-info" id="lbInfo"></div>
+<span class="lb-nav lb-next" id="lbNext">&#8250;</span>
+</div>
+<div class="footer">失 控 游 戏 · 旧商场外景 + 小火车场景 · 三十七景</div>
+
+<script>
+// ── Password Gate ──
+const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden")}
+async function checkPw(){
+const pw=document.getElementById("pwInput").value,err=document.getElementById("pwErr");err.textContent="";
+const buf=new TextEncoder().encode(pw);
+const hash=await crypto.subtle.digest("SHA-256",buf);
+const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("");
+if(hex===PW_HASH){sessionStorage.setItem("huzu_auth","1");document.getElementById("pwGate").classList.add("hidden")}
+else{err.textContent="密码错误"}}
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle"),c=document.getElementById("bibleCopy");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整场景设定";c.classList.remove("show")}else{d.classList.add("active");b.innerHTML="▾ 收起场景设定";c.classList.add("show");d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+async function copyBible(){var d=document.getElementById("bibleDetail"),c=document.getElementById("bibleCopy");try{await navigator.clipboard.writeText(d.innerText);c.textContent="✅ 已复制";c.classList.add("copied");setTimeout(function(){c.textContent="📋 一键复制";c.classList.remove("copied")},2000)}catch(e){c.textContent="❌ 复制失败";setTimeout(function(){c.textContent="📋 一键复制"},2000)}}
+
+const scenes=[// ── EP01_SC01 旧商场外景 ──
+{file:"A01_外景主母版.png",name:"A01 · 外景主母版",script:"「星星岛儿童乐园，1999年开的，2008年关闭。」——正面全景，千禧年风格褪色招牌，烂尾楼骨架环绕",section:"🏚️ 旧商场外景",anchor:"A01"},
+{file:"A02_入口方向锚点.png",name:"A02 · 入口方向锚点",script:"「邹青倒吊着看倒吊的世界——侧门、旧商场、千禧年风格的褪色招牌。」——从停车区望主入口",section:"🏚️ 旧商场外景",anchor:"A02"},
+{file:"A05_高位空间关系.png",name:"A05 · 高位空间关系",script:"俯瞰全景：商场坐落在空旷广场中央，被多车道空路和烂尾楼混凝土骨架包围，远处灰雾笼罩城市天际线",section:"🏚️ 旧商场外景",anchor:"A05"},
+{file:"A04_后勤侧后方.png",name:"A04 · 后勤侧后方",script:"「员工通道」——装货平台、通风管道、金属卷帘门。一侧是褪色瓷砖，另一侧是蓝色波纹铁皮围挡后的烂尾楼",section:"🏚️ 旧商场外景",anchor:"A04"},
+{file:"A06_入口细节锚点.png",name:"A06 · 入口细节锚点",script:"「星星岛儿童乐园」金色招牌下——玻璃推门、粉色立柱褪色剥落，卡通贴花残留，卷帘门紧闭。千禧年童年入口的特写",section:"🏚️ 旧商场外景",anchor:"A06"},
+{file:"A03_侧面商业体块.png",name:"A03 · 侧面商业体块",script:"右侧立面——三层玻璃幕墙塔楼偏左，屋顶裸露锈蚀广告钢架。小方窗、褪色瓷砖、关闭的卷帘门一字排开",section:"🏚️ 旧商场外景",anchor:"A03"},
+{file:"A09_人物体度锚点.png",name:"A09 · 人物体度锚点",script:"四人背影立于入口前——暗色连帽衫、浅色外套、牛仔裤。建筑高度与人对比，提供真实比例尺度参考",section:"🏚️ 旧商场外景",anchor:"A09"},
+{file:"A08_状态氛围.png",name:"A08 · 状态氛围",script:"全景氛围：厚云低压，积水反光，裂缝生草。蓝色施工围挡从左侧切入——空旷、潮湿、被遗忘的阴郁调性",section:"🏚️ 旧商场外景",anchor:"A08"},
+{file:"A07_材质参考.png",name:"A07 · 材质参考",script:"2×3 材质拼图：外墙瓷砖（水渍锈痕）· 蓝玻璃幕墙（蒙尘）· 锈蚀金属檐口 · 卷帘门 · 裂缝水泥地（杂草）· 空白广告框",section:"🏚️ 旧商场外景",anchor:"A07"},
+
+// ── 锚点合集 ──
+{file:"Anchor_Bible_A01-A09.png",name:"EP01_SC01 Anchor Bible",script:"场景锚点合集 A01–A09：主母版、入口方向、侧面体块、后勤后方、高位关系、入口细节、材质参考、状态氛围、人物体度",section:"📐 锚点合集",anchor:"bible",wide:true}
+,
+
+{file:"幽冥小火车/月台全景_空间母版.png",name:"S1-01 · 空间母版",script:"低机位正视月台：暗砖红小火车在左，圆形假山黑洞居中，绿安全出口灯悬于洞口上方。右侧锈栏杆+白瓷砖+黑色塑料帘，地面湿冷反光",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/月台全景_空间母版.png",name:"S1-01b · 月台全貌",script:"地府游乐项目全景：牛头马面持叉守洞，锡纸假桥栏杆缀彩花。洞口上方卡通拍照板+红LED屏，车厢一角入画",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/系统启动_球童底座.png",name:"S1-09 · 系统启动",script:"球童底座彩灯亮起，弹簧缓缓拉直。倒地的DV、卷边抠脸贴纸。远处黑帘后牛头马面隐现——设施被低技术系统接管的第一秒",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/麻花_被困车厢.png",name:"S1-02 · 麻花被困",script:"麻花坐在过于窄小的红黄儿童座舱里，安全压杆反锁腰间。她回头望向黑暗假山洞口，DV正要坠地——恐惧来自设施按错误规则困住人",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/球童_伸手逼近.png",name:"S1-03 · 球童逼近",script:"极低DV仰角：蓝白泥污运动鞋在前，玻璃钢玩偶手从车厢边缘缓慢伸来。背景是失焦的塑料帘、绿安全出口灯和铁轨",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/开裂足球_轨道特写.png",name:"S1-05 · 开裂足球",script:"旧足球停在窄轨正中，深裂口撕开吸光空腔——缝线松脱、无血肉无眼球。铁轨旁暗红玩具灯照到湿冷水磨石和蓝白运动鞋模糊轮廓",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/开裂足球_红光轨道.png",name:"S1-05b · 足球红光",script:"另一角度：足球停在轨道中央，右侧墙红灯投下血红色反光。远处绿出口灯微亮，上方隐约可见条纹运动鞋和旧袜子",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/假墙夹层_抠脸模特.png",name:"S1-06 · 假墙夹层",script:"检修夹层内堆满淘汰塑料模特和半身人体模型。每个脸部覆盖褪色卡通贴纸，贴纸中央抠成整齐圆形空洞——刚刚同步转过来的塑料人头",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/地府布景_牛头马面.png",name:"S1-07 · 地府布景",script:"儿童乐园尺度的掉漆牛头马面玻璃钢塑像。原本的地府名称被褪色欢迎牌粗暴覆盖。锡纸桥栏、塑料花——廉价又不对劲",section:"🎢 小火车场景",anchor:""},
+{file:"幽冥小火车/机关陈设_阎王桌弹珠机.png",name:"S1-08 · 机关陈设",script:"掉漆阎王桌右下藏可弹机关。发雾弹珠机屏幕只留故障光块。荧光牙齿塑料骷髅旁散落褪色游戏币——九十年代末无人维护的鬼屋角落",section:"🎢 小火车场景",anchor:""},
+
+{file:"错误分岔月台/道岔_总空间.png",name:"S7 · 错误分岔月台",script:"轨道从前景进入月台，在机械道岔处分为左右两线。电子路牌显示「左线——玩具回收」「右线——快乐呼吸」。湿冷瓷砖、掉漆金属、红指示灯——选择看似清楚却不可信",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/车厢压杆_临时组队.png",name:"S7 · 车厢压杆组队",script:"黑色安全背带交叉捆住两根黄色压杆——邹青用背带撬开锁死装置。四只手腕亮起蓝色手环光，右侧手臂被红色环形激光扫描。临时组队成功，系统判定通过",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/道岔_嵌球A.png",name:"S7 · 道岔嵌球A",script:"右侧道岔特写：足球A卡在变轨机构里，锈蚀螺栓、破裂地砖、机械连杆——系统强制改线的永久证据",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/左线_玩具回收废墟.png",name:"S7 · 玩具回收废墟",script:"左线尽头——摇摇车骨架、塑料滑梯、废车厢纠缠成数层楼高的巨物。数百盏车灯亮起，像眼睛一样睁开",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/摇摇车_灯眼模块.png",name:"S7 · 摇摇车灯眼",script:"旧投币摇摇车堆积近景：投币口、锈蚀面板、卡通外壳裂缝透出暖黄灯光。机械残存生命的隐喻",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/右线_快乐呼吸入口.png",name:"S7 · 快乐呼吸入口",script:"右线尽头——粉黄蓝三色PVC充气肺叶入口，补丁密布，内部红光随呼吸明灭。电子路牌亮着红色右箭头",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/球童_道岔前执行.png",name:"S7 · 球童执行判定",script:"球童小将抱球立于道岔前，脚下足球A嵌在轨道机构里。背后左右两条路线、红灯与绿出口灯构成执行时刻的完整空间",section:"⛔ 错误分岔月台",anchor:""},
+{file:"错误分岔月台/南建林_末张照片.png",name:"S7 · 南建林末张照片",script:"一只手举着旧照片：深蓝工服正面，胸口绣着「南建林」，但脸部被抠成光滑黑色圆洞。背景是湿冷月台的红绿灯光",section:"⛔ 错误分岔月台",anchor:""},
+
+{file:"三楼走廊/中庭_全景总览.png",name:"S3 · 商场中庭全景",script:"圆形多层中庭：弧形蓝绿玻璃采光核贯穿楼层，左侧停运扶梯金属踏板蒙灰，右侧楼梯红锈扶手向下延伸。白瓷砖墙水渍斑驳，绿安全出口灯提供唯一冷光——与S1同属一座旧商场",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/走廊_弧形采光核.png",name:"S3 · 弧形采光核走廊",script:"三层走廊围绕中庭玻璃核弯曲延伸。左侧瓷砖墙贴满原创儿童卡通贴纸（脸部均抠为圆洞），锈扶手双排延伸。空中悬吊绿安全出口灯——空间重复的异常正在萌芽",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/楼层牌_双框并排.png",name:"S3 · 楼层牌双框",script:"两段几乎完全一样的白瓷砖墙上，并排挂着同款旧楼层导视牌。牌体发黄、边框氧化、螺丝不一致——一切都太正常，直到后期文字揭示这是两个相邻的「3F」",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/楼层牌_拱形双框.png",name:"S3 · 拱形双框近景",script:"双拱形旧楼层牌近景：绿边框、氧化金属铆钉、空白内板积灰。左侧暗处可见楼梯锈扶手和蓝绿玻璃采光核。绿出口灯在潮湿地面留下反光",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/手机拍摄_双框走廊.png",name:"S3 · 手机拍摄楼层牌",script:"赵蔚竖握手机对准两块连续的楼层牌拍摄——手机屏幕只显示模糊取景光块。墙面贴纸和锈扶手在两个牌之间完全连续，正因一切太正常，两个「3F」才显得异常",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/纸飞机_投入垃圾桶.png",name:"S3 · 纸飞机入桶",script:"一只手将彩色打印表折成的纸飞机丢入锈蚀金属垃圾桶——王波的《星星岛内测五人小队职业配置1.7最终版》。桶内已有其他废弃纸张。旁边是停运扶梯入口和褪色卡通贴纸",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/走廊_五框长弧.png",name:"S3 · 五框长弧走廊",script:"沿弧形中庭延伸的漫长的三层走廊：五个空白旧展示框依次排列，双排锈扶手贯穿全墙。巨大兔子和蓝猫儿童壁画脸部均为黑色圆洞，浸在冷绿灯光和阴天散射光中",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/扶梯_卡通贴纸墙.png",name:"S3 · 扶梯卡通贴纸",script:"停运扶梯侧板近景：发黄塑料面板上布满原创千禧儿童乐园贴纸——太空机器人、海洋生物、棒球男孩——所有脸都被抠成同尺寸光滑圆洞。扶梯扶手带停在半途，瓷砖墙面开裂生霉",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/中庭_扶梯与卡通板.png",name:"S3 · 扶梯与拍照板",script:"从三层俯瞰中庭：左侧停运扶梯与蓝绿玻璃采光核构成垂直纵深，右侧白瓷墙挂卡通动物人脸镂空拍照板和双框公告栏。地面积水反光，顶部绿出口灯点亮天花板水渍轮廓",section:"🏢 三楼走廊",anchor:""}
+,{file:"三楼走廊/10_捕鱼机布景楼梯.png",name:"10 · 捕鱼机布景楼梯",script:"",section:"🏢 三楼走廊",anchor:""},
+{file:"三楼走廊/11_走廊追逐.png",name:"11 · 走廊追逐",script:"",section:"🏢 三楼走廊",anchor:""},
+{file:"小火车场景/S1_11_K哥落单.png",name:"S1 · 11 · K哥落单",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_12_周凯下坠.png",name:"S1 · 12 · 周凯下坠",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_13_手环残留.png",name:"S1 · 13 · 手环残留",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_14_运动相机.png",name:"S1 · 14 · 运动相机",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_15_检票UI.png",name:"S1 · 15 · 检票UI",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_16_组队手环.png",name:"S1 · 16 · 组队手环",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_17_麻花扫描.png",name:"S1 · 17 · 麻花扫描",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_18_临时光屏A.png",name:"S1 · 18 · 临时光屏A",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_19_临时光屏B.png",name:"S1 · 19 · 临时光屏B",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_20_临时光屏C.png",name:"S1 · 20 · 临时光屏C",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_21_DV回放线索.png",name:"S1 · 21 · DV回放线索",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_22_薄膜穿越.png",name:"S1 · 22 · 薄膜穿越",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_23_PVC挤压.png",name:"S1 · 23 · PVC挤压",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_24_肺内通道.png",name:"S1 · 24 · 肺内通道",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"小火车场景/S1_25_电子路牌.png",name:"S1 · 25 · 电子路牌",script:"",section:"🎢 小火车场景",anchor:""},
+{file:"开场场景/01_星星岛儿童游乐区.png",name:"01 · 星星岛儿童游乐区",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/02_星星岛生日房.png",name:"02 · 星星岛生日房",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/02b_前台母版2.png",name:"02b · 前台母版2",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/03_幽冥小火车候车厅_静止.png",name:"03 · 幽冥小火车候车厅 · 静止",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/04_幽冥小火车候车厅_启动.png",name:"04 · 幽冥小火车候车厅 · 启动",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/05_幽冥小火车_无人锁座.png",name:"05 · 幽冥小火车 · 无人锁座",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/06_球童男孩_静止出现.png",name:"06 · 球童男孩 · 静止出现",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/07_DV道具锚点.png",name:"07 · DV道具锚点",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/08_DV回放维修线索.png",name:"08 · DV回放维修线索",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/09_空间动线图.png",name:"09 · 空间动线图",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/10_CRT系统屏幕.png",name:"10 · CRT系统屏幕",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/11_蓝星贴纸手机壳.png",name:"11 · 蓝星贴纸手机壳",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/12_登记簿.png",name:"12 · 登记簿",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/13_摇摇车问答.png",name:"13 · 摇摇车问答",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/14_王波攻略表.png",name:"14 · 王波攻略表",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/15_内测邀请剪报.png",name:"15 · 内测邀请剪报",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/16_赵斌失联.png",name:"16 · 赵斌失联",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/17_关闭公告.png",name:"17 · 关闭公告",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/18_ZL落款.png",name:"18 · ZL落款",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/19_地址重合.png",name:"19 · 地址重合",script:"",section:"🎬 开场场景",anchor:""},
+{file:"开场场景/20_南建林照片墙.png",name:"20 · 南建林照片墙",script:"",section:"🎬 开场场景",anchor:""},
+{file:"电梯空间/01_健身房商用电梯.png",name:"01 · 健身房商用电梯",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/02_健身房电梯b.png",name:"02 · 健身房电梯b",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/03_商业大楼电梯间.png",name:"03 · 商业大楼电梯间",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/04_医院电梯.png",name:"04 · 医院电梯",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/05_四门电梯母版.png",name:"05 · 四门电梯母版",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/06_电梯门叠化.png",name:"06 · 电梯门叠化",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/07_电梯按钮.png",name:"07 · 电梯按钮",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/08_电梯谜题.png",name:"08 · 电梯谜题",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"电梯空间/09_ZL集团Logo.png",name:"09 · ZL集团Logo",script:"",section:"🛗 电梯空间",anchor:""},
+{file:"角色住所/01_张杭杭家楼道.png",name:"01 · 张杭杭家楼道",script:"",section:"🏠 角色住所",anchor:""},
+];
+
+const root=document.getElementById("content-root");
+const doneSections=new Set();
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+if(!doneSections.has(sec)){
+doneSections.add(sec);
+const block=document.createElement("div");block.className="section-block";
+const title=document.createElement("div");title.className="section-title";
+const anchorBadge=sc.anchor?`<span class="anchor-badge anchor-${sc.anchor}">${sc.anchor}</span>`:"";
+title.innerHTML=`<div class="line"></div><h2>▎${sec}${anchorBadge}</h2><div class="line"></div>`;
+block.appendChild(title);
+const gallery=document.createElement("div");gallery.className="gallery";
+gallery.setAttribute("data-section",sec);
+block.appendChild(gallery);
+root.appendChild(block);
+}
+const gal=root.querySelector(`[data-section="${sec}"]`);
+const card=document.createElement("div");card.className="card";
+if(sc.wide)card.classList.add("wide-card");
+card.setAttribute("data-index",i);
+card.innerHTML=`<div class="img-container"><img src="${sc.file}" alt="${sc.name}" loading="lazy"></div><div class="label"><div style="text-align:right;min-width:0;"><div class="scene-name">${sc.name}</div><div class="scene-script">${sc.script}</div></div></div>`;
+card.addEventListener("click",()=>openLightbox(i));
+gal.appendChild(card);
+});
+
+// ── Sidebar ──
+document.body.classList.add("with-sidebar");
+const sidebar=document.getElementById("sidebar");
+const navData=[];
+scenes.forEach((sc,i)=>{
+const sec=sc.section;
+let nd=navData.find(n=>n.section===sec);
+if(!nd){nd={section:sec,firstIndex:i,anchors:[]};navData.push(nd)}
+if(sc.anchor)nd.anchors.push({label:sc.anchor,index:i});
+});
+// Sort anchors by label for each section
+navData.forEach(nd=>{nd.anchors.sort((a,b)=>a.label.localeCompare(b.label))});
+navData.forEach(nd=>{
+const a=document.createElement("a");a.href="#";a.textContent=nd.section;
+a.onclick=function(e){e.preventDefault();const el=document.querySelector('[data-section="'+nd.section+'"]');if(el)el.closest(".section-block").scrollIntoView({behavior:"smooth",block:"start"})};
+a.dataset.section=nd.section;sidebar.appendChild(a);
+if(nd.anchors.length>0){
+nd.anchors.forEach(anchor=>{const sp=document.createElement("a");sp.className="sub";sp.href="#";sp.textContent=anchor.label;sp.onclick=function(e){e.preventDefault();openLightbox(anchor.index)};sidebar.appendChild(sp)});
+}
+});
+
+// ── Scroll Spy ──
+const sectionBlocks=document.querySelectorAll(".section-block");
+const navLinks=sidebar.querySelectorAll("a[data-section]");
+function updateActive(){
+let current=null;
+sectionBlocks.forEach(function(b){var rect=b.getBoundingClientRect();if(rect.top<=160)current=b.querySelector("[data-section]").dataset.section});
+navLinks.forEach(function(a){a.classList.toggle("active",a.dataset.section===current)});
+}
+window.addEventListener("scroll",updateActive,{passive:true});
+updateActive();
+
+
+const lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLightbox(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=scenes[cur];lbImg.src=s.file;lbImg.alt=s.name;lbInfo.innerHTML=`<b>${s.name}</b> &nbsp;·&nbsp; ${cur+1}/${scenes.length}<br><span style="font-size:14px;color:rgba(180,160,120,.5)">${s.script}</span>`}
+function prev(){cur=(cur-1+scenes.length)%scenes.length;updateLb()}
+function next(){cur=(cur+1)%scenes.length;updateLb()}
+document.getElementById("lbClose").addEventListener("click",closeLightbox);
+document.getElementById("lbPrev").addEventListener("click",e=>{e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",e=>{e.stopPropagation();next()});
+lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+</script>
+</body>
+</html>

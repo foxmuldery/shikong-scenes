@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周凯 · 人物造型图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a14;color:#ede4d4;font-family:"PingFang SC","Noto Serif SC",serif;min-height:100vh}
+.hero{position:relative;text-align:center;padding:60px 20px 40px;background:linear-gradient(180deg,#0d1020 0%,#12182b 40%,#0a0a14 100%);border-bottom:1px solid rgba(180,160,120,.15);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 30% 60%,rgba(255,255,255,.4),transparent),radial-gradient(1.5px 1.5px at 55% 15%,rgba(255,255,255,.6),transparent),radial-gradient(1px 1px at 70% 40%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 85% 70%,rgba(255,255,255,.5),transparent);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(36px,6vw,60px);font-weight:300;letter-spacing:.15em;color:#e0d4b8;text-shadow:0 0 40px rgba(220,190,130,.35);margin-bottom:8px}
+.hero .sub{position:relative;font-size:15px;letter-spacing:.2em;color:rgba(190,160,120,.5);margin-bottom:10px}
+.hero .back{position:absolute;top:24px;left:28px;font-size:13px;color:rgba(180,150,120,.4);text-decoration:none;letter-spacing:.06em;transition:color .2s;z-index:10}
+.hero .back:hover{color:rgba(220,190,140,.7)}
+.bible-core{max-width:800px;margin:28px auto 0;padding:0 24px;text-align:center}
+.bible-definition{display:inline-block;font-size:17px;line-height:1.8;color:#d4c8a0;letter-spacing:.06em;padding:18px 28px;border:1px solid rgba(200,170,120,.3);border-radius:6px;background:rgba(200,170,120,.05);max-width:700px}
+.bible-definition em{font-style:normal;color:#e0d4b0}
+.bible-tones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px}
+.bible-tone{font-size:14px;letter-spacing:.08em;color:rgba(200,180,140,.7);padding:6px 18px;border:1px solid rgba(180,150,100,.15);border-radius:20px;background:rgba(180,150,100,.04)}
+.bible-toggle{display:inline-block;font-size:14px;letter-spacing:.12em;color:rgba(180,150,100,.5);cursor:pointer;padding:8px 24px;border:1px solid rgba(180,150,100,.2);border-radius:4px;background:transparent;transition:all .25s;margin:16px 0 0}
+.bible-toggle:hover{
+.bible-copy{display:inline-block;font-size:12px;letter-spacing:.08em;color:rgba(160,140,110,.4);cursor:pointer;padding:6px 16px;border:1px solid rgba(180,150,100,.15);border-radius:4px;background:transparent;transition:all .25s;margin-left:10px;vertical-align:middle}
+.bible-copy:hover{color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-copy.copied{color:rgba(160,200,140,.7);border-color:rgba(160,200,140,.3)}
+color:rgba(220,190,130,.8);border-color:rgba(180,150,100,.4);background:rgba(180,150,100,.06)}
+.bible-detail{display:none;max-width:900px;margin:20px auto 0;padding:28px 32px 40px;text-align:left;border:1px solid rgba(180,150,100,.15);border-radius:8px;background:rgba(15,18,28,.8);max-height:75vh;overflow-y:auto}
+.bible-detail.active{display:block}
+.bible-detail h3{font-size:17px;font-weight:400;color:#e0d4b0;letter-spacing:.08em;margin:24px 0 10px;padding-bottom:6px;border-bottom:1px solid rgba(200,170,120,.15)}
+.bible-detail h3:first-child{margin-top:0}
+.bible-detail h4{font-size:15px;font-weight:400;color:#d4c8a0;margin:14px 0 6px}
+.bible-detail p,.bible-detail li{font-size:14px;line-height:1.8;color:rgba(215,200,170,.75)}
+.bible-detail ul{padding-left:20px;margin:6px 0}
+.bible-detail li{margin:3px 0}
+.bible-detail table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+.bible-detail th,.bible-detail td{padding:8px 12px;border:1px solid rgba(200,170,120,.15);text-align:left;color:rgba(215,200,170,.75)}
+.bible-detail th{color:#d4c8a0;font-weight:400;background:rgba(200,170,120,.05)}
+.bible-detail blockquote{border-left:2px solid rgba(200,170,120,.4);padding:6px 16px;margin:10px 0;color:rgba(215,200,170,.7);font-size:14px;font-style:italic}
+.section-title{display:flex;align-items:center;gap:14px;max-width:900px;margin:48px auto 18px;padding:0 24px}
+.section-title .line{flex:1;height:1px;background:rgba(180,160,120,.2)}
+.section-title h2{font-size:17px;font-weight:400;letter-spacing:.2em;color:rgba(210,190,160,.65);white-space:nowrap}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:28px;max-width:1200px;margin:0 auto;padding:0 24px 60px}
+.card{position:relative;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:8px;overflow:hidden;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.card .img-container{width:100%;overflow:hidden;background:#0a0d16}
+.card .img-container img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.card:hover img{transform:scale(1.03)}
+.card .label{padding:14px 18px}
+.card .scene-name{font-size:16px;color:#d4c8a8;letter-spacing:.05em}
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(5,5,15,.95);backdrop-filter:blur(10px);justify-content:center;align-items:center;flex-direction:column}
+.lightbox.active{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(215,200,170,.45);cursor:pointer;padding:20px;transition:color .2s;z-index:1001;user-select:none}
+.lb-nav:hover{color:rgba(230,215,180,.9)}
+.lb-prev{left:20px}.lb-next{right:20px}
+.lightbox .lb-close{position:absolute;top:24px;right:36px;font-size:42px;color:rgba(215,200,170,.55);cursor:pointer;transition:color .2s;z-index:1001}
+.lightbox .lb-close:hover{color:rgba(230,215,180,.9)}
+.lightbox .lb-info{margin-top:18px;font-size:16px;letter-spacing:.08em;color:rgba(215,200,170,.75);text-align:center;max-width:700px}
+.footer{text-align:center;padding:40px 20px;font-size:14px;letter-spacing:.1em;color:rgba(170,150,110,.4)}
+.pw-gate{position:fixed;inset:0;z-index:9999;background:#0d1020;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pw-gate.hidden{display:none}
+.pw-gate .pw-box{text-align:center;padding:48px 40px;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:12px;max-width:380px;width:90%}
+.pw-gate .pw-box h3{font-size:20px;font-weight:300;letter-spacing:.12em;color:#e0d4b8;margin-bottom:8px}
+.pw-gate .pw-box .pw-sub{font-size:13px;color:rgba(180,160,120,.4);letter-spacing:.06em;margin-bottom:28px}
+.pw-gate .pw-box input{width:100%;padding:12px 16px;font-size:16px;letter-spacing:.1em;background:#0a0d16;border:1px solid rgba(140,120,80,.25);border-radius:6px;color:#e0d4b8;text-align:center;outline:none;transition:border-color .25s}
+.pw-gate .pw-box input:focus{border-color:rgba(200,170,120,.5)}
+.pw-gate .pw-box input::placeholder{color:rgba(150,130,100,.3)}
+.pw-gate .pw-box button{margin-top:16px;width:100%;padding:12px;font-size:16px;letter-spacing:.1em;color:#0a0a14;background:rgba(200,170,120,.7);border:none;border-radius:6px;cursor:pointer;transition:background .25s}
+.pw-gate .pw-box button:hover{background:rgba(220,190,140,.85)}
+.pw-gate .pw-err{margin-top:14px;font-size:13px;color:rgba(200,100,80,.7);letter-spacing:.05em;min-height:18px}
+@media(max-width:700px){.gallery{grid-template-columns:1fr}.hero{padding:40px 16px 30px}}
+</style>
+</head>
+<body>
+
+<div class="pw-gate" id="pwGate">
+<div class="pw-box"><h3>🔒 受限访问</h3><div class="pw-sub">请输入密码以继续</div>
+<input type="password" id="pwInput" placeholder="······" onkeydown="if(event.key==='Enter')checkPw()">
+<button onclick="checkPw()">进 入</button><div class="pw-err" id="pwErr"></div></div>
+</div>
+
+<header class="hero">
+<a class="back" href="../index.html">← 返回角色选择</a>
+<p class="sub">失控游戏 · EP01</p>
+<h1>周 凯</h1>
+<div class="bible-core">
+<div class="bible-definition"><em>周凯</em> —— 25岁，论坛ID「K.Ghost」，密室玩家、都市探险爱好者。<br>橙色机能外套 + 装备满载 + 运动相机。<br>五人小队的<em>「机关位」</em> — 装备比人专业，把网络英雄穿进了现实。</div>
+<div class="bible-tones"><span class="bible-tone">25岁</span><span class="bible-tone">橙色</span><span class="bible-tone">机关位</span><span class="bible-tone">K.Ghost</span><span class="bible-tone">装备控</span></div>
+<button class="bible-toggle" id="bibleToggle" onclick="toggleBible()">▸ 查阅完整造型圣经</button><button class="bible-copy" id="bibleCopy" onclick="copyBible()">📋 复制圣经</button>
+<div class="bible-detail" id="bibleDetail">
+<h3>角色定位</h3>
+<p>周凯，25岁，密室论坛资深玩家，论坛ID「K.Ghost」。不是专业探险家，是一个长期沉浸在密室、恐怖游戏和都市传说社区中、逐渐相信自己已成为「大神」的普通年轻人。核心：把网络世界里的英雄形象穿到现实里。</p>
+<h3>核心视觉命题</h3>
+<blockquote>一个把论坛头像里的自己实现到现实中的胖宅探险者。装备比人专业。</blockquote>
+<h3>剪影识别</h3>
+<ul><li>橙色机能外套（核心识别色）</li><li>体型偏胖、敦实</li><li>胸前运动相机</li><li>多功能装备背心/胸挂</li><li>手腕电子手环</li></ul>
+<h3>服装系统</h3>
+<table>
+<tr><th>部位</th><th>描述</th></tr>
+<tr><td>外套</td><td>橙色机能风外套 — 多口袋、拉链、透气设计，不是军品</td></tr>
+<tr><td>内搭</td><td>深色T恤 — 功能性优先</td></tr>
+<tr><td>下装</td><td>深色工装裤/多口袋长裤</td></tr>
+<tr><td>鞋</td><td>深色户外/运动鞋 — 适合长时间行走</td></tr>
+</table>
+<h3>随身装备</h3>
+<ul><li>胸前运动相机（记录探险）</li><li>手腕电子手环（智能手表风格）</li><li>多功能小包/腰包</li><li>小手电、备用电池、多功能工具</li></ul>
+<h3>与其他角色区分</h3>
+<table>
+<tr><th>角色</th><th>识别</th></tr>
+<tr><td>邹青</td><td>鲜绿 + 短裤 + 行动先于判断</td></tr>
+<tr><td>王波</td><td>电子蓝 + 书包 + 攻略本</td></tr>
+<tr><td>周凯</td><td>橙色 + 装备多 + 自以为大神</td></tr>
+</table>
+<h3>禁止方向</h3>
+<blockquote>军品 · 户外生存专家 · 战术教官 · 特种兵 · 赛博朋克战士 · 真正的大神</blockquote>
+</div>
+</div>
+</header>
+
+<div class="section-title"><div class="line"></div><h2>▎📸 造型参考</h2><div class="line"></div></div>
+<div class="gallery" id="gallery"></div>
+
+<div class="lightbox" id="lightbox"><span class="lb-close" id="lbClose">&times;</span><span class="lb-nav lb-prev" id="lbPrev">&#8249;</span><img src="" alt="" id="lbImg"><div class="lb-info" id="lbInfo"></div><span class="lb-nav lb-next" id="lbNext">&#8250;</span></div>
+<div class="footer">失 控 游 戏 · 周 凯</div>
+
+<script>
+(function(){if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden");return}})();
+const PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+async function checkPw(){var i=document.getElementById("pwInput"),e=document.getElementById("pwErr"),g=document.getElementById("pwGate");if(!i.value){e.textContent="请输入密码";return}var h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(i.value));var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");if(hex===PW_HASH){g.classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误，请重试";i.value="";i.focus()}}
+
+function copyBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleCopy");var t=d.innerText;navigator.clipboard.writeText(t).then(function(){b.textContent="✓ 已复制";b.classList.add("copied");setTimeout(function(){b.textContent="📋 复制圣经";b.classList.remove("copied")},2000)})}
+
+function toggleBible(){var d=document.getElementById("bibleDetail"),b=document.getElementById("bibleToggle");if(d.classList.contains("active")){d.classList.remove("active");b.innerHTML="▸ 查阅完整造型圣经"}else{d.classList.add("active");b.innerHTML="▾ 收起造型圣经";d.scrollIntoView({behavior:"smooth",block:"nearest"})}}
+
+const items=[
+{name:"正面肖像",thumb:"thumbs/正面肖像.png",orig:"originals/正面肖像.png"},
+{name:"近景特写",thumb:"thumbs/近景特写.png",orig:"originals/近景特写.png"},
+{name:"全身正面站立",thumb:"thumbs/全身正面站立.png",orig:"originals/全身正面站立.png"},
+{name:"全身 背面",thumb:"thumbs/全身_背面.png",orig:"originals/全身_背面.png"},
+{name:"全身 侧面",thumb:"thumbs/全身_侧面.png",orig:"originals/全身_侧面.png"},
+{name:"多视角参考图",thumb:"thumbs/多视角参考图.png",orig:"originals/多视角参考图.png"},
+{name:"服装材质拼图",thumb:"thumbs/服装材质拼图.png",orig:"originals/服装材质拼图.png"},
+{name:"随身物品组图",thumb:"thumbs/随身物品组图.png",orig:"originals/随身物品组图.png"},
+{name:"标准三视图",thumb:"thumbs/标准三视图.jpeg",orig:"originals/标准三视图.jpeg"},
+{name:"造型定妆_无头手",thumb:"thumbs/造型定妆_无头手.jpeg",orig:"originals/造型定妆_无头手.jpeg"},
+{name:"纯服装细节",thumb:"thumbs/纯服装细节.jpeg",orig:"originals/纯服装细节.jpeg"},
+];
+
+const g=document.getElementById("gallery"),lightbox=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo");
+let cur=0;
+function openLb(i){cur=i;updateLb();lightbox.classList.add("active");document.body.style.overflow="hidden"}
+function closeLb(){lightbox.classList.remove("active");document.body.style.overflow=""}
+function updateLb(){var s=items[cur];lbImg.src=s.orig;lbImg.alt=s.name;lbInfo.innerHTML='<b>'+s.name+'</b> &nbsp;·&nbsp; '+(cur+1)+'/'+items.length}
+function prev(){cur=(cur-1+items.length)%items.length;updateLb()}
+function next(){cur=(cur+1)%items.length;updateLb()}
+items.forEach(function(it,i){var c=document.createElement("div");c.className="card";c.innerHTML='<div class="img-container"><img src="'+it.thumb+'" alt="'+it.name+'"></div><div class="label"><div class="scene-name">'+it.name+'</div></div>';c.addEventListener("click",function(){openLb(i)});g.appendChild(c)});
+document.getElementById("lbClose").addEventListener("click",closeLb);
+document.getElementById("lbPrev").addEventListener("click",function(e){e.stopPropagation();prev()});
+document.getElementById("lbNext").addEventListener("click",function(e){e.stopPropagation();next()});
+lightbox.addEventListener("click",function(e){if(e.target===lightbox)closeLb()});
+document.addEventListener("keydown",function(e){if(!lightbox.classList.contains("active"))return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next()});
+</script>
+</body>
+</html>
