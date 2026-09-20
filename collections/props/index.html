@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>失控游戏 · 道具图集</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0a0a14;color:#e0d8c8;font-family:"PingFang SC","Noto Serif SC",serif;overflow-x:hidden}
+.app{display:flex;min-height:100vh}
+.main{flex:1;min-width:0;margin-left:200px}
+.sidebar{position:fixed;top:0;left:0;width:200px;height:100vh;background:#0d1020;border-right:1px solid rgba(180,160,120,.12);z-index:100;overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-header{padding:22px 16px 14px;border-bottom:1px solid rgba(180,160,120,.1);text-align:center}
+.sidebar-header .logo{font-size:20px;letter-spacing:.12em;color:#e0d4b8;margin-bottom:4px}
+.sidebar-header .ver{font-size:11px;color:rgba(180,150,110,.35);letter-spacing:.1em}
+.sidebar-nav{flex:1;padding:6px 0;overflow-y:auto}
+.sidebar-nav a{display:flex;align-items:center;gap:8px;padding:9px 14px;font-size:13px;color:rgba(200,180,140,.45);text-decoration:none;border-left:2px solid transparent;transition:all .25s;letter-spacing:.04em}
+.sidebar-nav a:hover{color:rgba(230,210,160,.8);background:rgba(200,170,120,.05);border-left-color:rgba(200,170,120,.3)}
+.sidebar-nav a.active{color:#e0d4b8;background:rgba(200,170,120,.1);border-left-color:rgba(200,170,120,.6)}
+.sidebar-nav a .nav-emoji{font-size:15px;flex-shrink:0}
+.sidebar-nav a .nav-count{font-size:10px;color:rgba(180,150,110,.3);background:rgba(180,160,120,.08);padding:1px 6px;border-radius:8px;margin-left:auto}
+.sidebar-footer{padding:12px 16px;border-top:1px solid rgba(180,160,120,.1);font-size:11px;color:rgba(180,150,110,.3);text-align:center;letter-spacing:.06em}
+.hero{padding:48px 32px 32px;text-align:center}
+.hero .ep{font-size:15px;letter-spacing:.3em;color:rgba(190,160,120,.45);margin-bottom:8px}
+.hero h1{font-size:clamp(38px,7vw,60px);font-weight:300;letter-spacing:.18em;color:#e0d4b8;text-shadow:0 0 50px rgba(220,190,130,.35);margin-bottom:10px}
+.hero .sub{font-size:16px;color:rgba(200,180,140,.42);letter-spacing:.12em;margin-bottom:8px}
+.hero .meta{font-size:14px;color:rgba(180,150,110,.35);letter-spacing:.08em}
+.overview-wrap{padding:0 24px 24px}
+.overview-title{font-size:16px;letter-spacing:.15em;color:rgba(200,180,140,.4);margin-bottom:20px;text-align:center}
+.overview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;max-width:1200px;margin:0 auto}
+.ov-card{background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:10px;overflow:hidden;cursor:pointer;text-decoration:none;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;display:block}
+.ov-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.5),0 0 24px rgba(180,140,80,.08);border-color:rgba(180,140,80,.4)}
+.ov-card .ov-thumb{width:100%;height:180px;overflow:hidden;background:#0a0d16;display:flex;align-items:center;justify-content:center}
+.ov-card .ov-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ov-card:hover .ov-thumb img{transform:scale(1.05)}
+.ov-card .ov-info{padding:14px 16px;text-align:center}
+.ov-card .ov-emoji{font-size:24px;margin-bottom:3px}
+.ov-card .ov-name{font-size:17px;color:#d4c8a0;letter-spacing:.06em;margin-bottom:3px}
+.ov-card .ov-desc{font-size:11px;color:rgba(180,160,120,.4);line-height:1.5;letter-spacing:.04em;margin-bottom:8px}
+.ov-card .ov-count{font-size:11px;color:rgba(180,150,110,.35);padding:2px 8px;border:1px solid rgba(180,150,100,.15);border-radius:10px;display:inline-block;letter-spacing:.04em}
+.cat-divider{max-width:1200px;margin:44px auto 0;padding:0 28px;display:flex;align-items:center;gap:14px}
+.cat-divider .line{flex:1;height:1px;background:rgba(180,160,120,.12)}
+.cat-divider .cat-emoji{font-size:18px;color:rgba(200,170,120,.45);white-space:nowrap}
+.cat-divider .cat-label{font-size:15px;letter-spacing:.12em;color:rgba(200,170,120,.5);white-space:nowrap}
+.section-title{max-width:1200px;margin:12px auto 16px;padding:0 28px;font-size:14px;color:rgba(200,180,140,.35);letter-spacing:.08em}
+.gallery{max-width:1200px;margin:0 auto;padding:0 24px 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;align-items:start}
+.card{background:#111524;border:1px solid rgba(140,120,80,.15);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(180,140,80,.08);border-color:rgba(180,140,80,.35)}
+.card .img-box{width:100%;overflow:hidden;background:#0a0d16;display:flex;align-items:center;justify-content:center}
+.card .img-box img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.card:hover .img-box img{transform:scale(1.04)}
+.card .info{padding:12px 14px;text-align:center}
+.card .info .name{font-size:15px;color:#d4c8a0;letter-spacing:.06em}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.93);align-items:center;justify-content:center;flex-direction:column}
+.lightbox.show{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border:1px solid rgba(180,160,120,.15);border-radius:4px}
+.lightbox .lb-info{margin-top:16px;font-size:16px;color:rgba(220,200,160,.7);letter-spacing:.08em;text-align:center;max-width:80vw}
+.lightbox .lb-counter{font-size:12px;color:rgba(180,150,120,.4);margin-top:6px}
+.lightbox .lb-close{position:fixed;top:20px;right:28px;font-size:36px;color:rgba(200,170,120,.6);cursor:pointer;background:none;border:none;transition:color .25s;line-height:1;z-index:10000}
+.lightbox .lb-close:hover{color:#e0d4b8}
+.lightbox .lb-nav{position:fixed;top:50%;transform:translateY(-50%);font-size:48px;color:rgba(200,170,120,.4);cursor:pointer;background:none;border:none;transition:color .25s;z-index:10000;padding:20px}
+.lightbox .lb-nav:hover{color:#e0d4b8}
+.lightbox .lb-prev{left:20px}.lightbox .lb-next{right:20px}
+.footer{text-align:center;padding:48px 24px 64px;font-size:14px;letter-spacing:.12em;color:rgba(170,150,110,.35);grid-column:1/-1}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(1px 1px at 10% 20%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 25% 55%,rgba(255,255,255,.3),transparent),radial-gradient(1.5px 1.5px at 40% 15%,rgba(255,255,255,.55),transparent),radial-gradient(1px 1px at 55% 70%,rgba(255,255,255,.4),transparent),radial-gradient(1px 1px at 70% 35%,rgba(255,255,255,.25),transparent),radial-gradient(1.5px 1.5px at 85% 60%,rgba(255,255,255,.45),transparent),radial-gradient(1px 1px at 15% 85%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 60% 85%,rgba(255,255,255,.4),transparent)}
+.pw-gate{position:fixed;inset:0;z-index:99999;background:#0d1020;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.pw-gate.hidden{display:none}
+.pw-box{text-align:center;padding:48px 40px;background:#111524;border:1px solid rgba(140,120,80,.2);border-radius:12px;max-width:380px;width:90%}
+.pw-box h3{font-size:20px;font-weight:300;letter-spacing:.12em;color:#e0d4b8;margin-bottom:8px}
+.pw-box .pw-sub{font-size:13px;color:rgba(180,160,120,.4);letter-spacing:.06em;margin-bottom:28px}
+.pw-box input{width:100%;padding:12px 16px;font-size:16px;letter-spacing:.1em;background:#0a0d16;border:1px solid rgba(140,120,80,.25);border-radius:6px;color:#e0d4b8;text-align:center;outline:none;transition:border-color .25s}
+.pw-box input:focus{border-color:rgba(200,170,120,.5)}
+.pw-box input::placeholder{color:rgba(150,130,100,.3)}
+.pw-box button{margin-top:16px;width:100%;padding:12px;font-size:16px;letter-spacing:.1em;color:#0a0a14;background:rgba(200,170,120,.7);border:none;border-radius:6px;cursor:pointer;transition:background .25s}
+.pw-box button:hover{background:rgba(220,190,140,.85)}
+.pw-err{margin-top:14px;font-size:13px;color:rgba(200,100,80,.7);letter-spacing:.05em;min-height:18px}
+.prop-desc-block{max-width:800px;margin:0 auto 0;padding:0 28px;text-align:center}
+.prop-desc-block p{font-size:14px;color:rgba(180,160,120,.45);line-height:1.8;letter-spacing:.05em}
+.hamburger{display:none;position:fixed;top:12px;left:12px;z-index:200;width:36px;height:36px;background:#111524;border:1px solid rgba(180,160,120,.2);border-radius:6px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.hamburger span{display:block;width:18px;height:1.5px;background:rgba(200,170,120,.6)}
+@media(max-width:700px){.hamburger{display:flex}}
+.sidebar.mobile-open{display:flex!important;position:fixed;z-index:150;width:220px;box-shadow:4px 0 30px rgba(0,0,0,.8)}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}.sidebar{display:none}.main{margin-left:0}}
+@media(max-width:600px){.gallery{grid-template-columns:1fr}.hero h1{font-size:28px}.overview-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="pw-gate" id="pwGate"><div class="pw-box"><h3>🔒 失控游戏 · 受限访问</h3><div class="pw-sub">请输入密码以继续</div><input type="password" id="pwInput" placeholder="······" onkeydown="if(event.key==='Enter')checkPw()"><button onclick="checkPw()">进 入</button><div class="pw-err" id="pwErr"></div></div></div>
+<div class="stars"></div>
+<button class="hamburger" id="hamburger" onclick="toggleSidebar()"><span></span><span></span><span></span></button>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-header"><div class="logo">失 控 游 戏</div><div class="ver">道具设计图集</div></div>
+<nav class="sidebar-nav" id="sidebarNav">
+<a href="#top" data-section="top"><span class="nav-emoji">🏠</span>页面顶部</a>
+</nav>
+<div class="sidebar-footer">5 件道具 · 27 张图</div>
+</aside>
+<main class="main">
+<div id="top"></div>
+<div class="hero"><p class="ep">失 控 游 戏 · EP01</p><h1>道 具 图 集</h1><p class="sub">星星岛内测 · 核心复用道具资产</p><p class="meta">5 件道具系统 · 27 张概念设计图</p></div>
+<div class="overview-wrap"><div class="overview-title">道 具 总 览</div><div class="overview-grid" id="overviewGrid"></div></div>
+<div id="content-root"></div>
+<div class="footer">失 控 游 戏 · 道 具 图 集</div>
+</main>
+</div>
+<div class="lightbox" id="lightbox" onclick="closeLb(event)"><button class="lb-close" onclick="closeLb()">✕</button><button class="lb-nav lb-prev" onclick="lbNav(-1,event)">‹</button><button class="lb-nav lb-next" onclick="lbNav(1,event)">›</button><img id="lbImg" src=""><div class="lb-info" id="lbInfo"></div><div class="lb-counter" id="lbCounter"></div></div>
+<script>
+(function(){if(sessionStorage.getItem("huzu_auth")==="1"){document.getElementById("pwGate").classList.add("hidden");return}})();
+var PW_HASH="019be397cf10ba2e242d7507db0852b1dcab423c62bd150024ef1333a68136aa";
+async function checkPw(){var i=document.getElementById("pwInput"),e=document.getElementById("pwErr"),g=document.getElementById("pwGate");if(!i.value){e.textContent="请输入密码";return}var h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(i.value));var hex=Array.from(new Uint8Array(h)).map(function(b){return b.toString(16).padStart(2,"0")}).join("");if(hex===PW_HASH){g.classList.add("hidden");sessionStorage.setItem("huzu_auth","1")}else{e.textContent="密码错误，请重试";i.value="";i.focus()}}
+</script>
+<script>
+var PROPS=[{"id": "邪恶皮球", "emoji": "⚽", "title": "开裂足球 · 攻击球", "desc": "球童的核心武器，从普通足球渐变为开裂、追击、最终嵌入道岔的规则实体。皮面裂口随剧情逐步加深，内部露出根须状异化纤维。", "folder": "邪恶皮球", "images": [{"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_后视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_后视图.jpg", "label": "后视图", "global_idx": 0}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_左侧视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_左侧视图.jpg", "label": "左侧视图", "global_idx": 1}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_微距材质.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_微距材质.jpg", "label": "微距材质", "global_idx": 2}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_核心透视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_核心透视图.jpg", "label": "核心透视图", "global_idx": 3}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_正视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_正视图.jpg", "label": "正视图", "global_idx": 4}], "count": 5, "section_id": "sec-邪恶皮球"}, {"id": "球童男孩", "emoji": "👦", "title": "球童小将 NPC", "desc": "失控游戏第一关核心追杀单位。一米二儿童比例，红球衣蓝短裤，巨大蓝眼固定笑脸。左眼裂纹，胸口可裂开露出弹簧/电线/高速电机。", "folder": "球童男孩", "images": [{"thumb": "web/球童男孩/失控游戏_球童男孩_仰视角度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_仰视角度.jpg", "label": "仰视角度", "global_idx": 5}, {"thumb": "web/球童男孩/失控游戏_球童男孩_俯视角度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_俯视角度.jpg", "label": "俯视角度", "global_idx": 6}, {"thumb": "web/球童男孩/失控游戏_球童男孩_右侧45度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_右侧45度.jpg", "label": "右侧45度", "global_idx": 7}, {"thumb": "web/球童男孩/失控游戏_球童男孩_右侧正侧.jpg", "full": "web/球童男孩/失控游戏_球童男孩_右侧正侧.jpg", "label": "右侧正侧", "global_idx": 8}, {"thumb": "web/球童男孩/失控游戏_球童男孩_左侧45度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_左侧45度.jpg", "label": "左侧45度", "global_idx": 9}, {"thumb": "web/球童男孩/失控游戏_球童男孩_左侧正侧.jpg", "full": "web/球童男孩/失控游戏_球童男孩_左侧正侧.jpg", "label": "左侧正侧", "global_idx": 10}, {"thumb": "web/球童男孩/失控游戏_球童男孩_正面正视.jpg", "full": "web/球童男孩/失控游戏_球童男孩_正面正视.jpg", "label": "正面正视", "global_idx": 11}], "count": 7, "section_id": "sec-球童男孩"}, {"id": "猴子摇摇车", "emoji": "🐵", "title": "猴子摇摇车 · 场景机关", "desc": "星星岛前台核心交互机关。邹青骑乘触发被篡改的亲属问答——「爸爸的爸爸叫爸爸。爸爸没有爸爸。」走调电子琴配童声，S7 废墟中以骨架形态再现。", "folder": "猴子摇摇车", "images": [{"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_后视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_后视图.jpg", "label": "后视图", "global_idx": 12}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_左侧视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_左侧视图.jpg", "label": "左侧视图", "global_idx": 13}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_微距材质.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_微距材质.jpg", "label": "微距材质", "global_idx": 14}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_核心透视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_核心透视图.jpg", "label": "核心透视图", "global_idx": 15}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_正视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_正视图.jpg", "label": "正视图", "global_idx": 16}], "count": 5, "section_id": "sec-猴子摇摇车"}, {"id": "电视", "emoji": "📺", "title": "CRT 电视 · 规则屏", "desc": "星星岛前台预约与规则显示终端。蓝屏旧 CRT，依次显示预约人数、组队规则、倒计时和残留记录。老旧显像管质感，红色危险态/蓝色有效态。", "folder": "电视", "images": [{"thumb": "web/电视/失控游戏_电视_后视图.jpg", "full": "web/电视/失控游戏_电视_后视图.jpg", "label": "后视图", "global_idx": 17}, {"thumb": "web/电视/失控游戏_电视_左侧视图.jpg", "full": "web/电视/失控游戏_电视_左侧视图.jpg", "label": "左侧视图", "global_idx": 18}, {"thumb": "web/电视/失控游戏_电视_微距材质.jpg", "full": "web/电视/失控游戏_电视_微距材质.jpg", "label": "微距材质", "global_idx": 19}, {"thumb": "web/电视/失控游戏_电视_核心透视图.jpg", "full": "web/电视/失控游戏_电视_核心透视图.jpg", "label": "核心透视图", "global_idx": 20}, {"thumb": "web/电视/失控游戏_电视_正视图.jpg", "full": "web/电视/失控游戏_电视_正视图.jpg", "label": "正视图", "global_idx": 21}], "count": 5, "section_id": "sec-电视"}, {"id": "手表", "emoji": "⌚", "title": "电子手环 · 玩家身份", "desc": "失控游戏核心规则接口。红光等待态→蓝色组队态，周凯残留环可开闸。麻花无实体环仅浮红色扫描光，临时身份光屏倒计时 10 分钟。", "folder": "手表", "images": [{"thumb": "web/手表/失控游戏_手表_后视图.jpg", "full": "web/手表/失控游戏_手表_后视图.jpg", "label": "后视图", "global_idx": 22}, {"thumb": "web/手表/失控游戏_手表_左侧视图.jpg", "full": "web/手表/失控游戏_手表_左侧视图.jpg", "label": "左侧视图", "global_idx": 23}, {"thumb": "web/手表/失控游戏_手表_微距材质.jpg", "full": "web/手表/失控游戏_手表_微距材质.jpg", "label": "微距材质", "global_idx": 24}, {"thumb": "web/手表/失控游戏_手表_核心透视图.jpg", "full": "web/手表/失控游戏_手表_核心透视图.jpg", "label": "核心透视图", "global_idx": 25}, {"thumb": "web/手表/失控游戏_手表_正视图.jpg", "full": "web/手表/失控游戏_手表_正视图.jpg", "label": "正视图", "global_idx": 26}], "count": 5, "section_id": "sec-手表"}];
+var ALL_IMGS=[{"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_后视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_后视图.jpg", "label": "后视图", "global_idx": 0}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_左侧视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_左侧视图.jpg", "label": "左侧视图", "global_idx": 1}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_微距材质.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_微距材质.jpg", "label": "微距材质", "global_idx": 2}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_核心透视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_核心透视图.jpg", "label": "核心透视图", "global_idx": 3}, {"thumb": "web/邪恶皮球/失控游戏_邪恶皮球_正视图.jpg", "full": "web/邪恶皮球/失控游戏_邪恶皮球_正视图.jpg", "label": "正视图", "global_idx": 4}, {"thumb": "web/球童男孩/失控游戏_球童男孩_仰视角度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_仰视角度.jpg", "label": "仰视角度", "global_idx": 5}, {"thumb": "web/球童男孩/失控游戏_球童男孩_俯视角度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_俯视角度.jpg", "label": "俯视角度", "global_idx": 6}, {"thumb": "web/球童男孩/失控游戏_球童男孩_右侧45度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_右侧45度.jpg", "label": "右侧45度", "global_idx": 7}, {"thumb": "web/球童男孩/失控游戏_球童男孩_右侧正侧.jpg", "full": "web/球童男孩/失控游戏_球童男孩_右侧正侧.jpg", "label": "右侧正侧", "global_idx": 8}, {"thumb": "web/球童男孩/失控游戏_球童男孩_左侧45度.jpg", "full": "web/球童男孩/失控游戏_球童男孩_左侧45度.jpg", "label": "左侧45度", "global_idx": 9}, {"thumb": "web/球童男孩/失控游戏_球童男孩_左侧正侧.jpg", "full": "web/球童男孩/失控游戏_球童男孩_左侧正侧.jpg", "label": "左侧正侧", "global_idx": 10}, {"thumb": "web/球童男孩/失控游戏_球童男孩_正面正视.jpg", "full": "web/球童男孩/失控游戏_球童男孩_正面正视.jpg", "label": "正面正视", "global_idx": 11}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_后视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_后视图.jpg", "label": "后视图", "global_idx": 12}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_左侧视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_左侧视图.jpg", "label": "左侧视图", "global_idx": 13}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_微距材质.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_微距材质.jpg", "label": "微距材质", "global_idx": 14}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_核心透视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_核心透视图.jpg", "label": "核心透视图", "global_idx": 15}, {"thumb": "web/猴子摇摇车/失控游戏_猴子摇摇车_正视图.jpg", "full": "web/猴子摇摇车/失控游戏_猴子摇摇车_正视图.jpg", "label": "正视图", "global_idx": 16}, {"thumb": "web/电视/失控游戏_电视_后视图.jpg", "full": "web/电视/失控游戏_电视_后视图.jpg", "label": "后视图", "global_idx": 17}, {"thumb": "web/电视/失控游戏_电视_左侧视图.jpg", "full": "web/电视/失控游戏_电视_左侧视图.jpg", "label": "左侧视图", "global_idx": 18}, {"thumb": "web/电视/失控游戏_电视_微距材质.jpg", "full": "web/电视/失控游戏_电视_微距材质.jpg", "label": "微距材质", "global_idx": 19}, {"thumb": "web/电视/失控游戏_电视_核心透视图.jpg", "full": "web/电视/失控游戏_电视_核心透视图.jpg", "label": "核心透视图", "global_idx": 20}, {"thumb": "web/电视/失控游戏_电视_正视图.jpg", "full": "web/电视/失控游戏_电视_正视图.jpg", "label": "正视图", "global_idx": 21}, {"thumb": "web/手表/失控游戏_手表_后视图.jpg", "full": "web/手表/失控游戏_手表_后视图.jpg", "label": "后视图", "global_idx": 22}, {"thumb": "web/手表/失控游戏_手表_左侧视图.jpg", "full": "web/手表/失控游戏_手表_左侧视图.jpg", "label": "左侧视图", "global_idx": 23}, {"thumb": "web/手表/失控游戏_手表_微距材质.jpg", "full": "web/手表/失控游戏_手表_微距材质.jpg", "label": "微距材质", "global_idx": 24}, {"thumb": "web/手表/失控游戏_手表_核心透视图.jpg", "full": "web/手表/失控游戏_手表_核心透视图.jpg", "label": "核心透视图", "global_idx": 25}, {"thumb": "web/手表/失控游戏_手表_正视图.jpg", "full": "web/手表/失控游戏_手表_正视图.jpg", "label": "正视图", "global_idx": 26}];
+// Build sidebar
+var nav=document.getElementById("sidebarNav");
+var a=document.createElement("a");a.href="#sec-邪恶皮球";a.innerHTML='<span class="nav-emoji">⚽</span>开裂足球 · 攻击球<span class="nav-count">5</span>';a.setAttribute("data-section","sec-邪恶皮球");nav.appendChild(a);
+var a=document.createElement("a");a.href="#sec-球童男孩";a.innerHTML='<span class="nav-emoji">👦</span>球童小将 NPC<span class="nav-count">7</span>';a.setAttribute("data-section","sec-球童男孩");nav.appendChild(a);
+var a=document.createElement("a");a.href="#sec-猴子摇摇车";a.innerHTML='<span class="nav-emoji">🐵</span>猴子摇摇车 · 场景机关<span class="nav-count">5</span>';a.setAttribute("data-section","sec-猴子摇摇车");nav.appendChild(a);
+var a=document.createElement("a");a.href="#sec-电视";a.innerHTML='<span class="nav-emoji">📺</span>CRT 电视 · 规则屏<span class="nav-count">5</span>';a.setAttribute("data-section","sec-电视");nav.appendChild(a);
+var a=document.createElement("a");a.href="#sec-手表";a.innerHTML='<span class="nav-emoji">⌚</span>电子手环 · 玩家身份<span class="nav-count">5</span>';a.setAttribute("data-section","sec-手表");nav.appendChild(a);
+// Build overview cards
+var ovGrid=document.getElementById("overviewGrid");
+PROPS.forEach(function(p){var firstImg=p.images[0];var card=document.createElement("div");card.className="ov-card";card.onclick=function(){var el=document.getElementById(p.section_id);if(el)el.scrollIntoView({behavior:"smooth"});history.replaceState(null,"","#"+p.section_id)};card.innerHTML='<div class="ov-thumb"><img src="'+firstImg.thumb+'" alt="'+p.title+'" loading="eager"></div><div class="ov-info"><div class="ov-emoji">'+p.emoji+'</div><div class="ov-name">'+p.title+'</div><div class="ov-desc">'+p.desc+'</div><span class="ov-count">'+p.count+' 张</span></div>';ovGrid.appendChild(card)});
+// Build gallery sections
+var root=document.getElementById("content-root");
+PROPS.forEach(function(p){var div=document.createElement("div");div.className="cat-divider";div.id=p.section_id;div.innerHTML='<div class="line"></div><span class="cat-emoji">'+p.emoji+'</span><span class="cat-label">'+p.title+'</span><div class="line"></div>';root.appendChild(div);var db=document.createElement("div");db.className="prop-desc-block";db.innerHTML='<p>'+p.desc+'</p>';root.appendChild(db);var st=document.createElement("div");st.className="section-title";st.textContent=p.title+" · "+p.count+" 张概念设计图";root.appendChild(st);var gal=document.createElement("div");gal.className="gallery";p.images.forEach(function(img){var card=document.createElement("div");card.className="card";card.onclick=function(){openLb(img.global_idx)};card.innerHTML='<div class="img-box"><img src="'+img.thumb+'" alt="'+p.title+'" loading="lazy"></div><div class="info"><div class="name">'+img.label+'</div></div>';gal.appendChild(card)});root.appendChild(gal)});
+// Scroll spy
+var navLinks=document.querySelectorAll(".sidebar-nav a");
+function updateActive(){var sy=window.scrollY+140;var active=null;navLinks.forEach(function(a){var sec=document.getElementById(a.getAttribute("data-section"));if(sec&&sec.offsetTop<=sy)active=a});if(active){navLinks.forEach(function(a){a.classList.remove("active")});active.classList.add("active")}}
+window.addEventListener("scroll",updateActive);updateActive();
+// Lightbox
+var lb=document.getElementById("lightbox"),lbImg=document.getElementById("lbImg"),lbInfo=document.getElementById("lbInfo"),lbCounter=document.getElementById("lbCounter"),curIdx=0;
+function openLb(idx){curIdx=idx;var img=ALL_IMGS[idx];lbImg.src=img.full;lbImg.onerror=function(){lbImg.src=img.thumb;lbImg.onerror=null};lbInfo.textContent=img.label;lbCounter.textContent=(idx+1)+" / "+ALL_IMGS.length;lb.classList.add("show");document.body.style.overflow="hidden"}
+function closeLb(e){if(e&&e.target!==lb&&e.target!==lbImg&&e.target.className!=="lb-close")return;lb.classList.remove("show");document.body.style.overflow=""}
+function lbNav(dir,e){e.stopPropagation();curIdx=(curIdx+dir+ALL_IMGS.length)%ALL_IMGS.length;openLb(curIdx)}
+document.addEventListener("keydown",function(e){if(!lb.classList.contains("show"))return;if(e.key==="Escape"){lb.classList.remove("show");document.body.style.overflow=""}if(e.key==="ArrowLeft"){curIdx=(curIdx-1+ALL_IMGS.length)%ALL_IMGS.length;openLb(curIdx)}if(e.key==="ArrowRight"){curIdx=(curIdx+1)%ALL_IMGS.length;openLb(curIdx)}});
+// Mobile hamburger
+function toggleSidebar(){document.getElementById("sidebar").classList.toggle("mobile-open")}
+document.getElementById("sidebar").addEventListener("click",function(e){if(e.target.tagName==="A"&&window.innerWidth<=900){this.classList.remove("mobile-open")}});
+</script>
+</body>
+</html>
